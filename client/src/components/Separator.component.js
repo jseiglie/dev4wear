@@ -2,8 +2,8 @@ import React from "react";
 
 const SeparatorComponent = () => {
   return (
-    <div class="separator__container container-fluid g-0 p-0">
-      <p class="separator__text">
+    <div className="separator__container container-fluid g-0 p-0">
+      <p className="separator__text">
         {`@import url(https://fonts.cdnfonts.com/css/trajan-pro);@import
         url(https://fonts.googleapis.com/css2?family=Share+Tech+Mono&display=swap);.RRSS_btn,.RRSS_link:hover,.menu_Close,.navItem:hover{color:#720840}.RRSS_list,.footer_List,.navItem{list-style-type:none}.Seiglie_Footer,.colab_Title,.mainText,.tech_Title{font-family:Share
         Tech

@@ -2,7 +2,7 @@ import React from 'react'
 
 const ImportComponent = () => {
   return (
-    <p class="import"><span class="orange">import</span> wearCode <span class="orange">as</span> wc</p>
+    <p className="import"><span className="orange">import</span> dev4Wear <span className="orange">as</span> d4w</p>
   )
 }
 

@@ -4,15 +4,19 @@
   "private": true,
   "main": "index.js",
   "author": {
-		"name": "Javier Seiglie",
-		"url": "http://www.seiglie.com/"
-	},
+    "name": "Javier Seiglie",
+    "url": "http://www.seiglie.com/"
+  },
   "dependencies": {
+    "@react-three/drei": "^9.66.2",
+    "@react-three/fiber": "^8.13.0",
+    "axios": "^1.4.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-router-dom": "^6.10.0",
     "react-scripts": "5.0.1",
-    "scripts": "^0.1.0"
+    "scripts": "^0.1.0",
+    "three": "^0.152.2"
   },
   "scripts": {
     "start": "react-scripts start",

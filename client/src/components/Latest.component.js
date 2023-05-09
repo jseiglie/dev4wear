@@ -1,12 +1,12 @@
 import React from 'react'
-import tshirtWhite from "./../imgs/wearCodeWhite.webp";
-import tshirtBack from "./../imgs/wearCodeBlack.webp";
+import tshirtWhite from "./../imgs/dev4wear-white.webp";
+import tshirtBack from "./../imgs/dev4wear-black.webp";
 const LatestComponent = () => {
   return (
     <article className="container-fluid latest--wrapper ">
         
 
-    <h2 className="latest__title">wearCode.getLatest();</h2>
+    <h2 className="latest__title">dev4Wear.getLatest();</h2>
         
     <section className="latest__content">
         <img className="img-fluid" src={tshirtWhite} alt="latest item 1"/>

@@ -1,17 +1,20 @@
-import React from "react";
+import React, { useContext } from "react";
+import { Link } from "react-router-dom";
+import { Context } from "../state/appContext";
 
 const NavbarComponent = () => {
+  const {store} = useContext(Context)
   return (
     <nav
-      class="navbar navbar-expand-lg navbar--wrapper"
-      aria-label="Fifth navbar example"
+      className="navbar navbar-expand-lg navbar--wrapper"
+      aria-label="navbar"
     >
-      <div class="container-fluid">
-        <a class="navbar-brand" href="#">
-          {`wearCode();//`}
-        </a>
+      <div className="container-fluid">
+        <Link className="navbar-brand" to={"/"}>
+          {`dev4Wear();//`}
+        </Link>
         <button
-          class="navbar-toggler"
+          className="navbar-toggler"
           type="button"
           data-bs-toggle="collapse"
           data-bs-target="#navbarsExample05"
@@ -19,51 +22,51 @@ const NavbarComponent = () => {
           aria-expanded="false"
           aria-label="Toggle navigation"
         >
-          <span class="navbar-toggler-icon"></span>
+          <span className="navbar-toggler-icon"></span>
         </button>
 
-        <div class="collapse navbar-collapse" id="navbarsExample05">
-          <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-            
+        <div className="collapse navbar-collapse" id="navbarsExample05">
+          <ul className="navbar-nav me-auto mb-2 mb-lg-0">
+            <li className="nav-item nav__link">
+              <Link className="nav-link nav__link" to={"/"}>
+                d4w.home();
+              </Link>
+            </li>
 
-            <li class="nav-item nav__link">
-              <a class="nav-link nav__link" aria-current="page" href="#">
-                wc.home();
-              </a>
+            <li className="nav-item nav__link">
+              <Link className="nav-link nav__link" to={"/designs"}>
+                d4w.designs();
+              </Link>
             </li>
-            
-            <li class="nav-item nav__link">
-              <a class="nav-link nav__link" href="#">
-              wc.designs();
-              </a>
+            <li className="nav-item nav__link">
+              <Link className="nav-link nav__link" to={"/products"}>
+                d4w.products();
+              </Link>
             </li>
-            <li class="nav-item nav__link">
-              <a class="nav-link nav__link" href="#">
-              wc.products();
-              </a>
-            </li>
-            <li class="nav-item nav__link">
-              <a class="nav-link nav__link" href="#">
-              wc.buy();
-              </a>
-            </li>
-            
-            </ul>
-            <ul class="navbar-nav  ">
-            <li class="nav-item nav__link">
-              <a class="nav-link nav__link" href="#">
-              wc.about();
-              </a>
-            </li>
-            <li class="nav-item nav__link">
-              <a class="nav-link nav__link" href="#">
-              wc.contact();
-              </a>
+            <li className="nav-item nav__link">
+              <Link className="nav-link nav__link" to={"/buy"}>
+                d4w.buy();
+              </Link>
             </li>
           </ul>
-
+          <ul className="navbar-nav  ">
+            {store.auth? <li className="nav-item nav__link">
+              <Link className="nav-link nav__link" to={"/profile"}>
+                d4w.user(profile);
+              </Link>
+            </li> : ""}
+            <li className="nav-item nav__link">
+              <Link className="nav-link nav__link" to={"/about"}>
+                d4w.about();
+              </Link>
+            </li>
+            <li className="nav-item nav__link">
+              <Link className="nav-link nav__link" to={"/contact"}>
+                d4w.contact();
+              </Link>
+            </li>
+          </ul>
         </div>
-        
       </div>
     </nav>
   );
