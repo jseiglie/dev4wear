@@ -6,8 +6,8 @@ export const FavoritesProfileComponent = () => {
   ]);
   return (
     <section className="container">
-      {favorites.map((el) => (
-        <div className="card">
+      {favorites.map((el, i) => (
+        <div key={i} className="card">
           <div className="img-top">
             <figure>
               <img src={el.design} alt={el.item} className="img-fluid" />

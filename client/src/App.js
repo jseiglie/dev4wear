@@ -17,6 +17,8 @@ import { Login } from "./views/Login";
 import { Signup } from "./views/Signup";
 import injectContext, { Context } from "./state/appContext";
 import { Profile } from "./views/Profile";
+import { Products } from "./views/Products";
+import { Details } from "./views/Details";
 
 const App = () => {
   const basename = process.env.BASENAME || "";
@@ -44,9 +46,11 @@ const App = () => {
           <Route path="/modeler" element={<Modeler />} />
           <Route path="/about" element={<About />} />
           <Route path="/contact" element={<Contact />} />
-          <Route path="login" element={<Login/>}/>
-          <Route path="signup" element={<Signup/>}/>
-          <Route path="profile" element={<Profile/>}/>
+          <Route path="/login" element={<Login/>}/>
+          <Route path="/signup" element={<Signup/>}/>
+          <Route path="/profile" element={<Profile/>}/>
+          <Route path="/products" element={<Products/>}/>
+          <Route path="details/:id" element={<Details/>}/>
           <Route path="*" element={<NotFound />} />
         </Routes>
         <SeparatorComponent />

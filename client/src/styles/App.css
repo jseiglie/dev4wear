@@ -456,3 +456,16 @@ table {
 .oh__table{
   overflow-x: scroll;
 }
+
+
+/* --------Products------------ */
+
+.carousel__item__caption{
+  margin-top: -3rem;
+  visibility: hidden;
+}
+
+.products__card__footer{
+  display: flex;
+  justify-content: space-between;
+}

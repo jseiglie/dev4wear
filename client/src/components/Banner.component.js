@@ -1,10 +1,10 @@
 import React, { useContext, useEffect, useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { Context } from "../state/appContext";
 const BannerComponent = () => {
   
   const { store, actions } = useContext(Context);
-  
+  const navigate = useNavigate()
   return (
     <section className="banner container-fluid d-flex gx-0 d-flex justify-content-between">
       <div className="container-fluid ">

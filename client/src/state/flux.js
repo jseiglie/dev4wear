@@ -6,6 +6,8 @@ const getState = ({ getStore, getActions, setStore }) => {
       userEmail: null,
       user: null,
       token: null,
+      products: null,
+      productDetails: null,
       demo: [
         {
           title: "FIRST",
@@ -20,6 +22,9 @@ const getState = ({ getStore, getActions, setStore }) => {
       ],
     },
     actions: {
+      add_removeFavorite: (user_id, id) => {
+        console.log(user_id, id);
+      },
       login_register: async (url, email, password) => {
         try {
           const myHeaders = new Headers();
@@ -41,13 +46,13 @@ const getState = ({ getStore, getActions, setStore }) => {
           localStorage.setItem("token", data.token);
           localStorage.setItem("user", data.user.email);
           localStorage.setItem("user", data.user.id);
-          console.log(data)
+          // console.log(data);
           setStore({ auth: true });
           setStore({ userEmail: data.user.email });
           setStore({ user: data.user });
-          setStore({token: data.token})
+          setStore({ token: data.token });
         } catch (error) {
-          console.log(error); 
+          console.log(error);
         }
       },
       logout: () => {
@@ -57,7 +62,8 @@ const getState = ({ getStore, getActions, setStore }) => {
         setStore({ userEmail: null });
         setStore({ user: null });
       },
-      edit: async ( firstName,
+      edit: async (
+        firstName,
         lastName,
         email,
         password,
@@ -68,42 +74,75 @@ const getState = ({ getStore, getActions, setStore }) => {
         city,
         state,
         country,
-        id,) =>{
+        id
+      ) => {
         try {
-            const myHeaders = new Headers();
-            const raw = JSON.stringify({
-                lastName: lastName,
-        email : email,
-        password: password,
-        newPassword: newPassword,
-        phone: phone,
-        address: address,
-        zip: zip,
-        city: city,
-        state: state,
-        country: country,
-        id: id
-              });
-            myHeaders.append("Content-Type", "application/json");
-            const requestOptions = {
-                method: "PUT",
-                headers: myHeaders,
-                body: raw,
-                redirect: "follow",
-              };
-              console.log(raw)
-        const resp = await fetch(`${process.env.REACT_APP_API}/edit_user`, requestOptions)
-        if (!resp.ok) throw new Error("There was an error loging in");
-        const data = await resp.json();
-        if (localStorage.getItem("user") !== data.user.email){
+          const myHeaders = new Headers();
+          const raw = JSON.stringify({
+            firstName: firstName,
+            lastName: lastName,
+            email: email,
+            password: password,
+            newPassword: newPassword,
+            phone: phone,
+            address: address,
+            zip: zip,
+            city: city,
+            state: state,
+            country: country,
+            id: id,
+          });
+          myHeaders.append("Content-Type", "application/json");
+          const requestOptions = {
+            method: "PUT",
+            headers: myHeaders,
+            body: raw,
+            redirect: "follow",
+          };
+          //console.log(raw);
+          const resp = await fetch(
+            `${process.env.REACT_APP_API}/edit_user`,
+            requestOptions
+          );
+          if (!resp.ok) throw new Error("There was an error loging in");
+          const data = await resp.json();
+          if (localStorage.getItem("user") !== data.user.email) {
             localStorage.removeItem("user");
-            localStorage.setItem("user", data.user.email)
-        }
-        console.log(data)
-        setStore({ userEmail: data.user.email });
-        setStore({ user: data.user });
+            localStorage.setItem("user", data.user.email);
+          }
+          //console.log(data);
+          setStore({ userEmail: data.user.email });
+          setStore({ user: data.user });
         } catch (error) {
-            console.log(error)
+          console.log(error);
+        }
+      },
+      products: async () => {
+        try {
+          const resp = await fetch(`${process.env.REACT_APP_API}/products`);
+          const data = await resp.json();
+          setStore({ products: data });
+          localStorage.setItem("products", JSON.stringify(data.data))
+        } catch (error) {
+          console.log(error);
+        }
+      },
+      productsDetails: async (id) =>{
+        
+        const myHeaders = new Headers();
+        myHeaders.append("Content-Type", "application/json");
+          const requestOptions = {
+            method: "POST",
+            headers: myHeaders,     
+            redirect: "follow",
+          };
+        try {
+          const resp = await fetch(`${process.env.REACT_APP_API}/product/${id}`, requestOptions)
+          const data = await resp.json();
+          setStore({productDetails: data});
+          console.log(data)
+        } catch (error) {
+          console.log(error)
         }
       },
       // Use getActions to call a function within a fuction
@@ -116,10 +155,7 @@ const getState = ({ getStore, getActions, setStore }) => {
       // 		// fetching data from the backend
       // 		const resp = await fetch(process.env.BACKEND_URL + "/api/hello")
       // 		const data = await resp.json()
-      // 		setStore({ message: data.message })
-      // 		// don't forget to return something, that is how the async resolves
-      // 		return data;
-      // 	}catch(error){
+      // 		setStore({ message: datay
       // 		console.log("Error loading message from backend", error)
       // 	}
       // },

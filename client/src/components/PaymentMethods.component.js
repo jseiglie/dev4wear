@@ -8,11 +8,11 @@ export const PaymentMethodsComponent = () => {
   const [cardCVV] = useState("456");
   return (
     <section className="container">
-      <div class="accordion" id="accordionExample">
-        <div class="accordion-item">
-          <h2 class="accordion-header">
+      <div className="accordion" id="accordionExample">
+        <div className="accordion-item">
+          <h2 className="accordion-header">
             <button
-              class="accordion-button"
+              className="accordion-button"
               type="button"
               data-bs-toggle="collapse"
               data-bs-target={`#${cardAlias}`}
@@ -24,10 +24,10 @@ export const PaymentMethodsComponent = () => {
           </h2>
           <div
             id={`${cardAlias}`}
-            class="accordion-collapse collapse show"
+            className="accordion-collapse collapse show"
             data-bs-parent="#accordionExample"
           >
-            <div class="accordion-body">
+            <div className="accordion-body">
               <div className="pm__card__wrapper"></div>
               <div className="pm__card__details d-flex justiyf-content-between">
                 <div className="p-3 text-left">

@@ -5,7 +5,7 @@ export const OrderHistoryProfileComponent = () => {
     <section className="container-fluid oh_wrapper">
       <h2>orderHistory();</h2>
       <div className="table-responsive oh__table">
-        <table class="table table-striped table-sm">
+        <table className="table table-striped table-sm">
           <thead>
             <tr>
               <th scope="col">Order No.</th>
