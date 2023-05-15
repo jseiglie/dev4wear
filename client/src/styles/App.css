@@ -394,43 +394,38 @@ table {
 .form__btn {
   background-color: var(--color-primary);
   color: var(--color-white);
-  
 }
 
 /* ----------------------PROFILE------------------ */
-.profile__form{
+.profile__form {
   width: 100%;
   background-color: var(--color-primary);
   border-radius: 0.5rem;
-  padding:1.5rem 2rem 1.5rem 2rem ;
+  padding: 1.5rem 2rem 1.5rem 2rem;
   overflow-x: hidden;
-  
 }
 .profile__btn {
   border: 1px solid var(--color-white);
-  
-  
 }
-.form__col__wrapper_left{
+.form__col__wrapper_left {
   border-top-left-radius: 0.5rem;
-  border-bottom-left-radius: 0.5rem
+  border-bottom-left-radius: 0.5rem;
 }
-.form__col__wrapper_right{
+.form__col__wrapper_right {
   border-top-right-radius: 0.5rem;
-  border-bottom-right-radius: 0.5rem
+  border-bottom-right-radius: 0.5rem;
 }
-.profile__btn:hover{
+.profile__btn:hover {
   background-color: var(--color-secondary);
   color: var(--color-white) !important;
 }
 
-.profile__random__img{
-  display:flex; 
-  flex-direction: column; 
+.profile__random__img {
+  display: flex;
+  flex-direction: column;
   align-self: center;
-  
 }
-.profile__form__content{
+.profile__form__content {
   background-color: var(--color-white);
 }
 /* .input_wrapper{
@@ -438,64 +433,69 @@ table {
   border-radius: 0.5rem;
 } */
 
-
-.text--secondary{
+.text--secondary {
   color: var(--color-secondary);
 }
-.bg--white{
+.bg--white {
   background-color: var(--color-white);
 }
 
-
-
 /* ------Order History-------- */
-.oh_wrapper{
+.oh_wrapper {
   overflow-x: hidden;
 }
 
-.oh__table{
+.oh__table {
   overflow-x: scroll;
 }
 
-
 /* --------Products------------ */
 
-.btn__details{
+.btn__details {
   display: flex;
   justify-content: space-around;
   align-items: center;
 }
 
-.btn__details:hover{
+.btn__details:hover {
   background-color: var(--color-secondary);
 }
 
-
-.carousel__item__caption{
+.carousel__item__caption {
   margin-top: -3rem;
   visibility: hidden;
 }
 
-.products__card__footer{
+.products__card__footer {
   display: flex;
   justify-content: space-between;
 }
 
-.description__wrapper{
+.description__wrapper {
   display: flex;
   flex-direction: column;
 }
 
-.description__wrapper *{
+.description__wrapper * {
   justify-self: center;
-  margin: 1rem auto
+  margin: 1rem auto;
 }
 
-.description__wrapper table{
+.description__wrapper table {
   order: -2;
 }
 
-.colors__sizes-wrapper{
+.colors__sizes-wrapper {
   max-height: 30vh;
   overflow-y: auto;
+}
+
+.btn--primary {
+  background-color: var(--color-primary);
+  color: var(--color-white);
+  max-width: 10%;
+}
+
+.btn--primary:hover {
+  background-color: var(--color-secondary);
 }

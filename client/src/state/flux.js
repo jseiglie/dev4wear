@@ -4,6 +4,7 @@ const getState = ({ getStore, getActions, setStore }) => {
       message: null,
       auth: false,
       userEmail: null,
+      isAdmin: true,
       user: null,
       token: null,
       products: null,
