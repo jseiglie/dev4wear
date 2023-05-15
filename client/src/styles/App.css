@@ -460,6 +460,17 @@ table {
 
 /* --------Products------------ */
 
+.btn__details{
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.btn__details:hover{
+  background-color: var(--color-secondary);
+}
+
+
 .carousel__item__caption{
   margin-top: -3rem;
   visibility: hidden;
@@ -468,4 +479,23 @@ table {
 .products__card__footer{
   display: flex;
   justify-content: space-between;
+}
+
+.description__wrapper{
+  display: flex;
+  flex-direction: column;
+}
+
+.description__wrapper *{
+  justify-self: center;
+  margin: 1rem auto
+}
+
+.description__wrapper table{
+  order: -2;
+}
+
+.colors__sizes-wrapper{
+  max-height: 30vh;
+  overflow-y: auto;
 }

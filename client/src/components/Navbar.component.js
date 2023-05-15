@@ -44,8 +44,8 @@ const NavbarComponent = () => {
               </Link>
             </li>
             <li className="nav-item nav__link">
-              <Link className="nav-link nav__link" to={"/buy"}>
-                d4w.buy();
+              <Link className="nav-link nav__link" to={"/faq"}>
+                d4w.faq();
               </Link>
             </li>
           </ul>

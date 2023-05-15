@@ -1,6 +1,5 @@
-import React,{useState, useEffect, useContext} from "react";
-import { state } from "./state/state";
-import { BrowserRouter, Route, Routes, useNavigate } from "react-router-dom";
+import React,{useEffect, useContext} from "react";
+import { BrowserRouter, Route, Routes } from "react-router-dom";
 import "./styles/App.css";
 import { Home } from "./views/Home";
 import { NotFound } from "./views/NotFound";
@@ -19,6 +18,9 @@ import injectContext, { Context } from "./state/appContext";
 import { Profile } from "./views/Profile";
 import { Products } from "./views/Products";
 import { Details } from "./views/Details";
+import { Cart } from "./views/Cart";
+import { FAQ } from "./views/FAQ";
+import Designs from "./views/Designs";
 
 const App = () => {
   const basename = process.env.BASENAME || "";
@@ -51,6 +53,9 @@ const App = () => {
           <Route path="/profile" element={<Profile/>}/>
           <Route path="/products" element={<Products/>}/>
           <Route path="details/:id" element={<Details/>}/>
+          <Route path="/cart" element={<Cart/>} />
+          <Route path="/faq" element={<FAQ/>} />
+          <Route path="/designs" element={<Designs/>} />
           <Route path="*" element={<NotFound />} />
         </Routes>
         <SeparatorComponent />

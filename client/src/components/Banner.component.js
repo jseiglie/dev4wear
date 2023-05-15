@@ -20,17 +20,26 @@ const BannerComponent = () => {
             {store.auth ? (
               <section className="d-flex flex-column  align-items-center">
                 <div className="d-flex flex-column justify-content-center align-items-center text-center">
+                  <div className="d-flex align-self-center">
+
                   <Link to={"/profile"} className="user--register">
                     <span className="fa-regular fa-circle-user user__icon"></span>
+                    
                     <p>{store.userEmail}</p>
                   </Link>
+                  <div className="d-flex align-self-center ">
+                  <Link to={"/cart"} className="user--register">
+                    <span className="fa-solid fa-cart-shopping user__icon"></span>
+                    </Link>
+                  </div>
+                    </div>
                   <button
-                    className="btn text-dark banner_btn__logout"
+                    className="btn text-dark banner_btn__logout d-flex align-self-center border mt-3"
                     onClick={async () => {
                       await actions.logout();
                       navigate("/");
                     }}
-                  >
+                    >
                     LogOut();
                   </button>
                 </div>

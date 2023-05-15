@@ -8,6 +8,7 @@ const getState = ({ getStore, getActions, setStore }) => {
       token: null,
       products: null,
       productDetails: null,
+      loginNeeded: false,
       demo: [
         {
           title: "FIRST",
@@ -22,6 +23,16 @@ const getState = ({ getStore, getActions, setStore }) => {
       ],
     },
     actions: {
+      buyNow: (id) =>{
+        console.log(id)
+      },
+      needLogin: ()=>{
+        const store = getStore();
+          store.needLogin? setStore({needLogin: false}) : setStore({needLogin: true}) 
+      },
+      add_to_cart: (id) =>{
+        console.log(id)
+      },
       add_removeFavorite: (user_id, id) => {
         console.log(user_id, id);
       },
