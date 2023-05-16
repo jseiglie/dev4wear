@@ -499,3 +499,11 @@ table {
 .btn--primary:hover {
   background-color: var(--color-secondary);
 }
+
+
+
+/* --------Designs--------- */
+
+.design__wrapper:hover{
+  cursor: pointer;
+}

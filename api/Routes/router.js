@@ -7,27 +7,42 @@ const axios = require("axios");
 const env = require("dotenv").config();
 const { sign } = require("jsonwebtoken");
 const { validateToken } = require("../middleware/auth.middelware");
-const cl = require("./../config/cloudinary");
 const formater = (str) => str.replaceAll(" ", "-");
 const Users = require("../models/Users");
-
+const { cloudinary } = require("./../config/cloudinary");
+const Categories = require("../models/Categories");
+const Items = require("../models/Items");
 //checks for validToken
 router.get("/auth", validateToken, (req, res) => {
   res.json(req.user);
 });
 
-router.post("/imgupload", async (req, res) => {
-  cl.uploader
-    .upload("")
-    .then((resp) => console.log(resp))
-    .catch((error) => console.log(error));
+router.get("/design_details/:id", async (req, res) => {
+  const id = req.params;
+  console.log(id);
+  const resp = await Items.findOne({ where: { cloudinary_id: id } });
+  // const { resources } = await cloudinary.search
+  // .expression(`public_id: ${id}`)
+  // .execute();
+  // const publicIDs = resources.map(file=> file.public_id);
+  res.send(resp);
+});
+
+router.post("/categories", async (req, res) => {
+  const { category } = req.body;
+  const resp = await Categories.create({ category: category });
+  res.send(resp);
+});
+
+router.get("/categories", async (req, res) => {
+  const resp = await Categories.findAll();
+  res.send(resp);
 });
 
 // SIGN UP
 router.post("/register", async (req, res) => {
   const { email, password } = req.body;
   const check = await Users.findOne({ where: { email: email } });
-  console.log(check);
   if (!check) {
     bcrypt.hash(password, 8).then((hash) => {
       const user = Users.create({
@@ -42,6 +57,40 @@ router.post("/register", async (req, res) => {
     });
   } else {
     res.json("Email already exists");
+  }
+});
+
+// CLOUDINARY get imgs
+router.get("/images", async (req, res) => {
+  const { resources } = await cloudinary.search
+    .expression("resource_type:image AND folder: dev4weardesigns")
+    .sort_by("public_id", "desc")
+    .max_results(30)
+    .execute();
+  const publicIDs = resources.map((file) => file.public_id);
+  res.send(publicIDs);
+});
+
+//Cloudinary UPLOAD
+router.post("/img_upload", async (req, res) => {
+  try {
+    const { img, category, name, price } = req.body;
+    const uploadResp = await cloudinary.uploader.upload(img, {
+      folder: "dev4weardesigns",
+    });
+
+    const apiResp = await Items.create({
+      name: name,
+      image_url: uploadResp.url,
+      cloudinary_id: uploadResp.public_id,
+      category: category,
+      price: price,
+    });
+
+    res.json({ msg: "uploaded", data: apiResp });
+  } catch (error) {
+    console.log(error);
+    res.status(500).json({ error: "Something went wrong" });
   }
 });
 

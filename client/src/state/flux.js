@@ -10,6 +10,9 @@ const getState = ({ getStore, getActions, setStore }) => {
       products: null,
       productDetails: null,
       loginNeeded: false,
+      categories: null,
+      cloudinaryImages: null,
+      itemDetails: null,
       demo: [
         {
           title: "FIRST",
@@ -24,6 +27,23 @@ const getState = ({ getStore, getActions, setStore }) => {
       ],
     },
     actions: {
+      designDetails: async (id) =>{
+        const resp = await fetch(`${process.env.REACT_APP_API}/design_details/${id}`);
+        const data = await resp.json()
+        setStore({itemDetails: data})
+
+      },
+      cloudinaryImages: async () =>{
+        const resp = await fetch(`${process.env.REACT_APP_API}/images`);
+        const data = await resp.json();
+        setStore({cloudinaryImages: data});
+      },
+      getCategories: async () =>{
+        const resp = await fetch(`${process.env.REACT_APP_API}/categories`);
+        const data = await resp.json();
+        console.log(data)
+        setStore({categories: data})
+      },
       buyNow: (id) =>{
         console.log(id)
       },

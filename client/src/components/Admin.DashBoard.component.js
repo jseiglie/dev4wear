@@ -1,12 +1,14 @@
 import React, { useContext, useEffect } from "react";
 import { Context } from "../state/appContext";
 import { useNavigate } from "react-router-dom";
+import { AdminUploaderComponent } from "./Admin.Uploader.component";
 
 export const AdminDashBoardComponent = () => {
   const { store, actions } = useContext(Context);
   const navigate = useNavigate();
   useEffect(() => {
     if (!store.isAdmin) navigate("/admin");
+    actions.getCategories();
   }, []);
   return (
     <article className="container-fluid d-flex flex-column">
@@ -34,15 +36,15 @@ export const AdminDashBoardComponent = () => {
           </button>
           <button
             className="nav-link "
-            id="v-pills-profile-tab"
+            id="v-pills-Upload-tab"
             data-bs-toggle="pill"
-            data-bs-target="#v-pills-profile"
+            data-bs-target="#v-pills-Upload"
             type="button"
             role="tab"
-            aria-controls="v-pills-profile"
+            aria-controls="v-pills-Upload"
             aria-selected="false"
           >
-            Profile
+            Upload
           </button>
           <button
             className="nav-link"
@@ -82,31 +84,31 @@ export const AdminDashBoardComponent = () => {
             Settings
           </button>
         </div>
-        <div className="tab-content" id="v-pills-tabContent">
+        <div className="tab-content container-fluid" id="v-pills-tabContent">
           <div
             className="tab-pane fade show active"
             id="v-pills-home"
             role="tabpanel"
             aria-labelledby="v-pills-home-tab"
-            tabindex="0"
+            tabIndex="0"
           >
             ...
           </div>
           <div
             className="tab-pane fade"
-            id="v-pills-profile"
+            id="v-pills-Upload"
             role="tabpanel"
-            aria-labelledby="v-pills-profile-tab"
-            tabindex="0"
+            aria-labelledby="v-pills-Upload-tab"
+            tabIndex="0"
           >
-            ...
+            <AdminUploaderComponent/>
           </div>
           <div
             className="tab-pane fade"
             id="v-pills-disabled"
             role="tabpanel"
             aria-labelledby="v-pills-disabled-tab"
-            tabindex="0"
+            tabIndex="0"
           >
             ...
           </div>
@@ -115,7 +117,7 @@ export const AdminDashBoardComponent = () => {
             id="v-pills-messages"
             role="tabpanel"
             aria-labelledby="v-pills-messages-tab"
-            tabindex="0"
+            tabIndex="0"
           >
             ...
           </div>
@@ -124,7 +126,7 @@ export const AdminDashBoardComponent = () => {
             id="v-pills-settings"
             role="tabpanel"
             aria-labelledby="v-pills-settings-tab"
-            tabindex="0"
+            tabIndex="0"
           >
             ...
           </div>

@@ -10,7 +10,7 @@ const Categories = db.define(
         primaryKey: true,
       },
       category: {
-        type: Sequelize.INTEGER,
+        type: Sequelize.STRING(20),
         allowNull: false,
         unique: true
       },
