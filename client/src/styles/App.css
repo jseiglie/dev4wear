@@ -493,7 +493,15 @@ table {
 .btn--primary {
   background-color: var(--color-primary);
   color: var(--color-white);
+  
+}
+
+.sm{
   max-width: 10%;
+}
+
+.md{
+  max-width: 50%;
 }
 
 .btn--primary:hover {
@@ -506,4 +514,9 @@ table {
 
 .design__wrapper:hover{
   cursor: pointer;
+}
+
+.text--comments{
+  font-size: 0.8rem;
+  font-style: italic;
 }

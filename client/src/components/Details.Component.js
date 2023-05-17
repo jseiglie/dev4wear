@@ -5,7 +5,7 @@ import { useNavigate } from "react-router-dom";
 import ImportComponent from "./Import.component";
 const CarouselComponent = lazy(() => import("./Carousel.component"));
 
-const DetailsComponent = (props) => {
+const DetailsComponent = () => {
   const { store, actions } = useContext(Context);
   const [product] = useState(store.productDetails);
   const navigate = useNavigate();
@@ -62,6 +62,7 @@ const DetailsComponent = (props) => {
             <div className="col-sm-12 col-md-12 col-lg-6 col-xl-6 d-flex flex-column">
               <h4 className="my-3 align-self-start">colorSelect();</h4>
               <section className="colors__sizes-wrapper container">
+                
                 {product.options[0].values.map((el, i) => (
                   <div key={i} className="form-check d-flex ">
                     <input

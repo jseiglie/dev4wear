@@ -9,7 +9,6 @@ export const Home = () => {
   useEffect(()=>{
     if (store.products== null) {
         actions.products()
-        console.log(store.products)
     }
 },[])
   return (

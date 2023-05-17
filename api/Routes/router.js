@@ -17,14 +17,17 @@ router.get("/auth", validateToken, (req, res) => {
   res.json(req.user);
 });
 
-router.get("/design_details/:id", async (req, res) => {
-  const id = req.params;
-  console.log(id);
+router.get("/designDetails/:id", async (req, res) => {
+  const id = req.params.id;
+  
   const resp = await Items.findOne({ where: { cloudinary_id: id } });
+  
   // const { resources } = await cloudinary.search
   // .expression(`public_id: ${id}`)
   // .execute();
   // const publicIDs = resources.map(file=> file.public_id);
+  // resp.push(fetch, publicIDs)
+
   res.send(resp);
 });
 
@@ -63,7 +66,7 @@ router.post("/register", async (req, res) => {
 // CLOUDINARY get imgs
 router.get("/images", async (req, res) => {
   const { resources } = await cloudinary.search
-    .expression("resource_type:image AND folder: dev4weardesigns")
+    .expression("resource_type:image")
     .sort_by("public_id", "desc")
     .max_results(30)
     .execute();
@@ -75,9 +78,7 @@ router.get("/images", async (req, res) => {
 router.post("/img_upload", async (req, res) => {
   try {
     const { img, category, name, price } = req.body;
-    const uploadResp = await cloudinary.uploader.upload(img, {
-      folder: "dev4weardesigns",
-    });
+    const uploadResp = await cloudinary.uploader.upload(img);
 
     const apiResp = await Items.create({
       name: name,

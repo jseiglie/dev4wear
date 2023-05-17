@@ -1,14 +1,14 @@
 import React, { useContext, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import { Context } from "../state/appContext";
-
+import { Image } from "cloudinary-react";
+import { DesignsDetailsComponent } from "../components/Designs.Details.component";
 export const DesignsDetails = () => {
   const { id } = useParams();
-  const { store, actions } = useContext(Context);
-  const fullId = `dev4weardesigns/${id}`;
+  const { actions } = useContext(Context);
+  
   useEffect(() => {
-    actions.designDetails(fullId);
+    actions.designDetails(id);
   }, []);
-  console.log(store.DesignsDetails);
-  return <div>DesignsDetails</div>
+  return <article><DesignsDetailsComponent/></article>
 };

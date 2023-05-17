@@ -11,7 +11,6 @@ const ProductsComponent = (props) => {
   const handleFavorite = (e) => {
     const id = e.target.parentElement.parentElement.id;
     if (!store.user) {
-      
       navigate("/login");
       return;
     }

@@ -1,14 +1,13 @@
 import React, { Suspense, lazy, useContext, useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
 import { Context } from "../state/appContext";
 const DetailsComponent = lazy(() =>
   import("./../components/Details.Component")
 );
 
 export const Details = () => {
-  const { id } = useParams();
-  const {store, actions} = useContext(Context)
-  const [details, setDetails] = useState(store.productDetails);
+  
+  const {store} = useContext(Context)
+  const [details] = useState(store.productDetails);
 
 
   // const getDetails = async () => {
@@ -32,14 +31,13 @@ export const Details = () => {
   //   getDetails();
   // });
 
-  console.log(details);
 
   return (
     <>
     
-      {details ? (
+      {details && details ? (
         <Suspense fallback={<h1>Loading</h1>}>
-          <DetailsComponent details={store.details} />
+          <DetailsComponent  />
         </Suspense>
       ) : (
         "LoadingManager..."

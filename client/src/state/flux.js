@@ -13,6 +13,7 @@ const getState = ({ getStore, getActions, setStore }) => {
       categories: null,
       cloudinaryImages: null,
       itemDetails: null,
+      itemId: null,
       demo: [
         {
           title: "FIRST",
@@ -27,32 +28,39 @@ const getState = ({ getStore, getActions, setStore }) => {
       ],
     },
     actions: {
-      designDetails: async (id) =>{
-        const resp = await fetch(`${process.env.REACT_APP_API}/design_details/${id}`);
-        const data = await resp.json()
-        setStore({itemDetails: data})
-
+      designDetails: async (id) => {
+        const store = getStore();
+        const resp = await fetch(
+          `${process.env.REACT_APP_API}/designDetails/${id}`
+        );
+        const data = await resp.json();
+        setStore({ itemDetails: data });
+        const item = await store.products && store.products.data.filter((el) => el.title == data.name ? el.id : "")
+        setStore({
+          itemId: item[0].id
+        });
       },
-      cloudinaryImages: async () =>{
+      cloudinaryImages: async () => {
         const resp = await fetch(`${process.env.REACT_APP_API}/images`);
         const data = await resp.json();
-        setStore({cloudinaryImages: data});
+        setStore({ cloudinaryImages: data });
       },
-      getCategories: async () =>{
+      getCategories: async () => {
         const resp = await fetch(`${process.env.REACT_APP_API}/categories`);
         const data = await resp.json();
-        console.log(data)
-        setStore({categories: data})
+        setStore({ categories: data });
       },
-      buyNow: (id) =>{
-        console.log(id)
+      buyNow: (id) => {
+        console.log(id);
       },
-      needLogin: ()=>{
+      needLogin: () => {
         const store = getStore();
-          store.needLogin? setStore({needLogin: false}) : setStore({needLogin: true}) 
+        store.needLogin
+          ? setStore({ needLogin: false })
+          : setStore({ needLogin: true });
       },
-      add_to_cart: (id) =>{
-        console.log(id)
+      add_to_cart: (id) => {
+        console.log(id);
       },
       add_removeFavorite: (user_id, id) => {
         console.log(user_id, id);
@@ -154,27 +162,28 @@ const getState = ({ getStore, getActions, setStore }) => {
           const resp = await fetch(`${process.env.REACT_APP_API}/products`);
           const data = await resp.json();
           setStore({ products: data });
-          localStorage.setItem("products", JSON.stringify(data.data))
+          localStorage.setItem("products", JSON.stringify(data.data));
         } catch (error) {
           console.log(error);
         }
       },
-      productsDetails: async (id) =>{
-        
+      productsDetails: async (id) => {
         const myHeaders = new Headers();
         myHeaders.append("Content-Type", "application/json");
-          const requestOptions = {
-            method: "POST",
-            headers: myHeaders,     
-            redirect: "follow",
-          };
+        const requestOptions = {
+          method: "POST",
+          headers: myHeaders,
+          redirect: "follow",
+        };
         try {
-          const resp = await fetch(`${process.env.REACT_APP_API}/product/${id}`, requestOptions)
+          const resp = await fetch(
+            `${process.env.REACT_APP_API}/product/${id}`,
+            requestOptions
+          );
           const data = await resp.json();
-          setStore({productDetails: data});
-          console.log(data)
+          setStore({ productDetails: data });
         } catch (error) {
-          console.log(error)
+          console.log(error);
         }
       },
       // Use getActions to call a function within a fuction
