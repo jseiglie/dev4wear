@@ -15,8 +15,8 @@ export const PaymentSuccess = () => {
                 ,{" "} check it out now!
             </p>
 
-            <p className='text-muted info__text--small '>
-                *Please, bear in mind that these desings are not responsive and will need of a big screen to display it as it was design
+            <p className='text-muted pt-5 info__text--small align-self-end'>
+                *Please, bear in mind that these desings are not responsive and will need of a big screen with a 1400px resolution to display it as it was design
                 </p>
 
         </section>
