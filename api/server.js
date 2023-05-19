@@ -15,10 +15,7 @@ const Categories = require("./models/Categories");
 const Orders = require("./models/Orders");
 const PaymentMethods = require("./models/PaymentMethods");
 const Items = require("./models/Items");
-
-
-
-
+const path = require("path");
 //app.use(express.urlencoded({extended: true}))
 app.use(
   cors({
@@ -29,9 +26,9 @@ app.use(
   })
 );
 app.use(express.static("public"));
-app.use(express.json({limit: "50mb"}));
-app.use(express.urlencoded({ limit: '50mb', extended: true }));
-
+app.use(express.json({ limit: "50mb" }));
+app.use(express.urlencoded({ limit: "50mb", extended: true }));
+// app.use(express.static(path.join(__dirname, "public")))
 // app.use((req, res, next)=>{
 //     res.setHeader("Access-Control-Allow-Origin", "*")
 //     res.setHeader("Access-Control-Allow-Origin", "GET, POST, PUT, DELETE");
@@ -39,7 +36,9 @@ app.use(express.urlencoded({ limit: '50mb', extended: true }));
 // })
 
 const api = require("./Routes/router");
+
 const exp = require("constants");
+
 app.use("/api", api);
 
 //Relationships

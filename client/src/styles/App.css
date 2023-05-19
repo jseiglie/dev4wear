@@ -520,3 +520,31 @@ table {
   font-size: 0.8rem;
   font-style: italic;
 }
+
+
+
+/*--------- PAYPAL ------------ */
+
+.btn-paypal{
+  transition: color 0.2s ease 0s, background-color 0.2s ease 0s, border-color 0.2s ease 0s, box-shadow 0.2s ease 0s;
+    transition-duration: 0.2s, 0.2s, 0.2s, 0.2s;
+    transition-timing-function: ease, ease, ease, ease;
+    transition-delay: 0s, 0s, 0s, 0s;
+    transition-property: color, background-color, border-color, box-shadow;
+    border: 0.125rem solid rgb(0, 48, 135);
+    color: rgb(255, 255, 255);
+    font-family: PayPalOpen-Bold, "Helvetica Neue", Arial, sans-serif;
+    font-size: 1.125rem;
+    line-height: 1.5rem;
+    font-weight: 400;
+    background-color: rgb(0, 48, 135);
+    padding: 0.625rem 1.875rem;
+    min-width: 6rem;
+    border-radius: 1000px;
+}
+
+.btn-paypal:hover{
+  text-decoration: none;
+  background-color: rgb(0, 112, 224);
+  border-color: rgb(0, 112, 224);
+}

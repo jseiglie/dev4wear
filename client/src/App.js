@@ -24,6 +24,7 @@ import Designs from "./views/Designs";
 import { Admin } from "./views/Admin";
 import { AdminDashBoardComponent } from "./components/Admin.DashBoard.component";
 import { DesignsDetails } from "./views/DesignsDetails";
+import { PaypalSuccess } from "./views/PaypalSuccess";
 
 const App = () => {
   const basename = process.env.BASENAME || "";
@@ -62,6 +63,7 @@ const App = () => {
           <Route path="/design_details/:id" element={<DesignsDetails/>}/>
           <Route path="/admin" element={<Admin/>} />
           <Route path="/admin_dashboard" element={<AdminDashBoardComponent/>} />
+          <Route path="/payment_success" element={<PaypalSuccess/>}/>
           <Route path="*" element={<NotFound />} />
         </Routes>
         <SeparatorComponent />

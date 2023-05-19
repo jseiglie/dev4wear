@@ -12,16 +12,37 @@ const Users = require("../models/Users");
 const { cloudinary } = require("./../config/cloudinary");
 const Categories = require("../models/Categories");
 const Items = require("../models/Items");
+const {create_order, cancel_order, capture_order} = require("../controllers/paypal.controllers")
 //checks for validToken
 router.get("/auth", validateToken, (req, res) => {
   res.json(req.user);
 });
 
+
+//PAY PAL
+
+router.post("/create_order", async (req, res)=>{
+  create_order(req, res)
+
+});
+
+router.get("/capture_order", async (req, res)=>{
+  console.log("PEPEPEPEPEPEPPE")
+  capture_order(req, res)
+  
+});
+router.get("/cancel_order", async (req, res)=>{
+  cancel_order(req, res)
+  
+});
+
+
+
 router.get("/designDetails/:id", async (req, res) => {
   const id = req.params.id;
-  
+
   const resp = await Items.findOne({ where: { cloudinary_id: id } });
-  
+
   // const { resources } = await cloudinary.search
   // .expression(`public_id: ${id}`)
   // .execute();
