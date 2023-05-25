@@ -220,7 +220,7 @@ router.get("/getStore", async (req, res) => {
     url: "https://api.printify.com/v1/shops.json",
     headers: {
       "User-Agent": "dev4wear",
-      Authorization: `${process.env.NODE_ENV_API}`,
+      Authorization: `${process.env.NODE_ENV_PRINTIFY_TOKEN}`,
     },
   };
 
@@ -242,7 +242,7 @@ router.get("/products", async (req, res) => {
     maxBodyLength: Infinity,
     url: `https://api.printify.com/v1/shops/${process.env.NODE_ENV_STORE_ID}/products.json`,
     headers: {
-      Authorization: `${process.env.NODE_ENV_API}`,
+      Authorization: `Bearer ${process.env.NODE_ENV_PRINTIFY_TOKEN}`,
       "User-Agent": "dev4wear",
     },
   };
@@ -267,7 +267,7 @@ router.post("/product/:id", async (req, res) => {
     maxBodyLength: Infinity,
     url: `https://api.printify.com/v1/shops/${process.env.NODE_ENV_STORE_ID}/products/${req.params.id}.json`,
     headers: {
-      Authorization: `${process.env.NODE_ENV_API}`,
+      Authorization: `${process.env.NODE_ENV_PRINTIFY_TOKEN}`,
       "User-Agent": "dev4wear",
     },
   };
@@ -290,7 +290,7 @@ router.get("*order/:id", async (req, res) => {
     maxBodyLength: Infinity,
     url: `https://api.printify.com/v1/shops/${process.env.NODE_ENV_STORE_ID}/orders/${req.params.id}.json`,
     headers: {
-      Authorization: `${process.env.NODE_ENV_API}`,
+      Authorization: `${process.env.NODE_ENV_PRINTIFY_TOKEN}`,
       "User-Agent": "dev4wear",
     },
   };
@@ -315,7 +315,7 @@ router.get("/orders", async (req, res) => {
     maxBodyLength: Infinity,
     url: `https://api.printify.com/v1/shops/${process.env.NODE_ENV_STORE_ID}/orders.json`,
     headers: {
-      Authorization: `${process.env.NODE_ENV_API}`,
+      Authorization: `${process.env.NODE_ENV_PRINTIFY_TOKEN}`,
       "User-Agent": "dev4wear",
     },
   };
@@ -377,7 +377,7 @@ router.post("/create_order", async (req, res) => {
     url: `https://api.printify.com/v1/shops/${process.env.NODE_ENV_STORE_ID}/orders.json`,
     headers: {
       "Content-Type": "application/json",
-      Authorization: `${process.env.NODE_ENV_API}`,
+      Authorization: `${process.env.NODE_ENV_PRINTIFY_TOKEN}`,
       "User-Agent": "dev4wear",
     },
     data: data,

@@ -1,21 +1,22 @@
+require('dotenv').config()
 //import {sequelize} from "./config/db.js";
 //import  express  from "express";
 const https = require("https");
 const express = require("express");
 const app = express();
-const port = process.env.PORT || 3001;
-const bodyParser = require("body-parser");
+const port = process.env.NODE_ENV_PORT || 3001;
+//const bodyParser = require("body-parser");
 const db = require("././config/db");
 const cors = require("cors");
-const uuid = require("uuid").v4;
-const dotenv = require("dotenv");
-const cloudinary = require("cloudinary").v2;
+//const uuid = require("uuid").v4;
+//const dotenv = require("dotenv");
 const Users = require("./models/Users");
 const Categories = require("./models/Categories");
 const Orders = require("./models/Orders");
 const PaymentMethods = require("./models/PaymentMethods");
 const Items = require("./models/Items");
-const path = require("path");
+//const path = require("path");
+
 //app.use(express.urlencoded({extended: true}))
 app.use(
   cors({
