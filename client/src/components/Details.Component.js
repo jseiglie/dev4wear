@@ -62,7 +62,7 @@ const DetailsComponent = () => {
             <div className="col-sm-12 col-md-12 col-lg-6 col-xl-6 d-flex flex-column">
               <h4 className="my-3 align-self-start">colorSelect();</h4>
               <section className="colors__sizes-wrapper container">
-                
+                {console.log(product)}
                 {product.options[0].values.map((el, i) => (
                   <div key={i} className="form-check d-flex ">
                     <input

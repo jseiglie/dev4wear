@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useState } from 'react'
+import React, { useContext, useEffect } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { Context } from '../../state/appContext'
 
@@ -8,8 +8,5 @@ export const CheckAdminHelper = () => {
     useEffect(()=>{
         if(!store.isAdmin) navigate("/admin")
     },[])
-  return (
-    ""    
-  )
 }
 

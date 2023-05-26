@@ -7,6 +7,7 @@ export const HomeProfileComponent = () => {
   return (
     <section className='container my-3'>
         <h2 className='bg--primary text-white p-3'>dev4Wear.greet(user); 
+        {console.log(store.user)}
             <p className='mt-3'>// Welcome, {`${store.user.firstName ? store.user.firstName : "error getting name" }  `}</p></h2>
         <div className='row my-3'>
             <div className='col-sm-12 col-md-6 col-lg-4 col-xl-3'>

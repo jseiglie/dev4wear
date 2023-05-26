@@ -14,6 +14,8 @@ const getState = ({ getStore, getActions, setStore }) => {
       cloudinaryImages: null,
       itemDetails: null,
       itemId: null,
+      countries: null,
+      loginError: null,
       demo: [
         {
           title: "FIRST",
@@ -35,9 +37,13 @@ const getState = ({ getStore, getActions, setStore }) => {
         );
         const data = await resp.json();
         setStore({ itemDetails: data });
-        const item = await store.products && store.products.data.filter((el) => el.title == data.name ? el.id : "")
+        const item =
+          (await store.products) &&
+          store.products.data.filter((el) =>
+            el.title == data.name ? el.id : ""
+          );
         setStore({
-          itemId: item[0].id
+          itemId: item[0].id,
         });
       },
       cloudinaryImages: async () => {
@@ -66,6 +72,7 @@ const getState = ({ getStore, getActions, setStore }) => {
         console.log(user_id, id);
       },
       login_register: async (url, email, password) => {
+        console.log("-------------------------------------")
         try {
           const myHeaders = new Headers();
           myHeaders.append("Content-Type", "application/json");
@@ -81,8 +88,14 @@ const getState = ({ getStore, getActions, setStore }) => {
             redirect: "follow",
           };
           const resp = await fetch(url, requestOptions);
-          if (!resp.ok) throw new Error("There was an error loging in");
+          if (resp.status==400) {
+              setStore({loginError: "Email is NOT linked to an account"})
+            return Error("This email has no linked account");
+          };
           const data = await resp.json();
+          if (!data.token || !data.user) {
+            throw new Error("There was an error loging in");
+          }
           localStorage.setItem("token", data.token);
           localStorage.setItem("user", data.user.email);
           localStorage.setItem("user", data.user.id);
@@ -139,7 +152,6 @@ const getState = ({ getStore, getActions, setStore }) => {
             body: raw,
             redirect: "follow",
           };
-          //console.log(raw);
           const resp = await fetch(
             `${process.env.REACT_APP_API}/edit_user`,
             requestOptions
@@ -161,6 +173,7 @@ const getState = ({ getStore, getActions, setStore }) => {
         try {
           const resp = await fetch(`${process.env.REACT_APP_API}/products`);
           const data = await resp.json();
+
           setStore({ products: data });
           localStorage.setItem("products", JSON.stringify(data.data));
         } catch (error) {
@@ -182,6 +195,16 @@ const getState = ({ getStore, getActions, setStore }) => {
           );
           const data = await resp.json();
           setStore({ productDetails: data });
+        } catch (error) {
+          console.log(error);
+        }
+      },
+      countries: async () =>{
+        try {
+          const resp = await fetch("https://restcountries.com/v3.1/all")
+          const data = await resp.json()
+          setStore({ countries: data });
+
         } catch (error) {
           console.log(error);
         }

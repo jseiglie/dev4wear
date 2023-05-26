@@ -1,6 +1,7 @@
 import React, { useContext, useState, useEffect } from "react";
 import { Context } from "../state/appContext";
 import { useNavigate } from "react-router-dom";
+import { getCountries } from "./utils/getCountries";
 const ProfileFormComponent = () => {
   const { store, actions } = useContext(Context);
 
@@ -45,6 +46,7 @@ const ProfileFormComponent = () => {
       className="control profile__form"
       onSubmit={(e) => handleSubmit(e)}
     >
+      <getCountries/>
       <div className="row ">
         <div className="col-sm-12 col-md-12 col-lg-4 col-xl-4 d-flex flex-column profile__random__img  ">
           <figure>
@@ -165,6 +167,9 @@ const ProfileFormComponent = () => {
           <label className="form-label my-3" htmlFor="country">
             country:
           </label>
+          <select>
+            {store.countries.map((el, i)=>{console.log(el)})}
+          </select>
           <input
             className="form-control text-center"
             id="country"
