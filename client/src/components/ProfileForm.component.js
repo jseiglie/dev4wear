@@ -1,7 +1,8 @@
 import React, { useContext, useState, useEffect } from "react";
 import { Context } from "../state/appContext";
 import { useNavigate } from "react-router-dom";
-import { getCountries } from "./utils/getCountries";
+import { GetCountries } from "./utils/GetCountries";
+
 const ProfileFormComponent = () => {
   const { store, actions } = useContext(Context);
 
@@ -23,7 +24,6 @@ const ProfileFormComponent = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log(store.user);
     actions.edit(
       firstName,
       lastName,
@@ -46,7 +46,7 @@ const ProfileFormComponent = () => {
       className="control profile__form"
       onSubmit={(e) => handleSubmit(e)}
     >
-      <getCountries/>
+      <GetCountries />
       <div className="row ">
         <div className="col-sm-12 col-md-12 col-lg-4 col-xl-4 d-flex flex-column profile__random__img  ">
           <figure>
@@ -167,16 +167,27 @@ const ProfileFormComponent = () => {
           <label className="form-label my-3" htmlFor="country">
             country:
           </label>
-          <select>
-            {store.countries.map((el, i)=>{console.log(el)})}
+          <select
+            className="form-select"
+            defaultValue={
+              store.user.country ? store.user.country : "--Select Country--"
+            }
+            onChange={(e) => setCountry(e.target.value)}
+          >
+            {store.countries &&
+              store.countries.map((el, i) => (
+                <option className="form-option" key={i} value={el.name.common}>
+                  {el.name.common}
+                </option>
+              ))}
           </select>
-          <input
+          {/* <input
             className="form-control text-center"
             id="country"
             type="text"
             value={country}
             onChange={(e) => setCountry(e.target.value)}
-          />
+          /> */}
         </div>
         <div className="col-12 d-flex justify-content-around">
           <input

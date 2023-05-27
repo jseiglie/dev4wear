@@ -14,7 +14,6 @@ export const Logincomponent = (props) => {
   const navigate = useNavigate();
   const handleSubmit = async (e) => {
     e.preventDefault();
-
     if (!email || email.length < 4) {
       setErrorEmail(true);
       throw new Error("Email is not valid");
@@ -23,9 +22,9 @@ export const Logincomponent = (props) => {
       setErrorPassword(true);
       throw new Error("Password is not valid");
     }
-    
-    await actions
+      await actions
       .login_register(url, email, password)
+      if(store.token) navigate("/profile")
       
   };
   return (

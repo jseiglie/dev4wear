@@ -72,7 +72,7 @@ const getState = ({ getStore, getActions, setStore }) => {
         console.log(user_id, id);
       },
       login_register: async (url, email, password) => {
-        console.log("-------------------------------------")
+        console.log("-------------LOGI_REGISTER------------------------", url);
         try {
           const myHeaders = new Headers();
           myHeaders.append("Content-Type", "application/json");
@@ -88,10 +88,14 @@ const getState = ({ getStore, getActions, setStore }) => {
             redirect: "follow",
           };
           const resp = await fetch(url, requestOptions);
-          if (resp.status==400) {
-              setStore({loginError: "Email is NOT linked to an account"})
-            return Error("This email has no linked account");
-          };
+          if (resp.status == 410) {
+            setStore({ loginError: "Email is NOT linked to an account" });
+            throw new Error("This email has no linked account");
+          }
+          if (resp.status == 411) {
+            setStore({ loginError: "Email taken, try logging in" });
+            throw new Error("Email taken, try logging in");
+          }
           const data = await resp.json();
           if (!data.token || !data.user) {
             throw new Error("There was an error loging in");
@@ -199,12 +203,11 @@ const getState = ({ getStore, getActions, setStore }) => {
           console.log(error);
         }
       },
-      countries: async () =>{
+      countries: async () => {
         try {
-          const resp = await fetch("https://restcountries.com/v3.1/all")
-          const data = await resp.json()
+          const resp = await fetch("https://restcountries.com/v3.1/all");
+          const data = await resp.json();
           setStore({ countries: data });
-
         } catch (error) {
           console.log(error);
         }

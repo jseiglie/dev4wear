@@ -78,7 +78,7 @@ router.post("/register", async (req, res) => {
       res.json({ token: token, user: { email: email } });
     });
   } else {
-    res.json("Email already exists");
+    res.status(411).json("Email already exists");
   }
 });
 
@@ -133,7 +133,7 @@ router.post("/login", async (req, res) => {
         res.json({ status: "OK", token: token, user: user });
       });
     } else {
-      res.status(400).json({ error: "This email doesn't has a linked account" });
+      res.status(410).json({ error: "This email doesn't has a linked account" });
       return;
     }
   } catch (error) {
