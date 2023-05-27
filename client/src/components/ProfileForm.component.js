@@ -10,17 +10,17 @@ const ProfileFormComponent = () => {
   useEffect(() => {
     if (!store.user || !store.token) navigate("/login");
   }, []);
-  const [firstName, setFirstName] = useState(store.user.firstName);
-  const [lastName, setLastName] = useState(store.user.lastName);
-  const [email, setEmail] = useState(store.user.email);
+  const [firstName, setFirstName] = useState(store.user? store.user.firstName : "");
+  const [lastName, setLastName] = useState(store.user? store.user.lastName : "");
+  const [email, setEmail] = useState(store.user? store.user.email : "");
   const [password, setPassword] = useState("");
   const [newPassword, setNewPassword] = useState("");
-  const [phone, setPhone] = useState(store.user.phone);
-  const [address, setAddress] = useState(store.user.address);
-  const [zip, setZip] = useState(store.user.zip);
-  const [city, setCity] = useState(store.user.city);
-  const [state, setState] = useState(store.user.state);
-  const [country, setCountry] = useState(store.user.country);
+  const [phone, setPhone] = useState(store.user? store.user.phone : "");
+  const [address, setAddress] = useState(store.user? store.user.address : "");
+  const [zip, setZip] = useState(store.user? store.user.zip : "");
+  const [city, setCity] = useState(store.user? store.user.city : "");
+  const [state, setState] = useState(store.user? store.user.state : "");
+  const [country, setCountry] = useState(store.user? store.user.country : "");
 
   const handleSubmit = (e) => {
     e.preventDefault();

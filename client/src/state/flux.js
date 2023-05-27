@@ -16,6 +16,7 @@ const getState = ({ getStore, getActions, setStore }) => {
       itemId: null,
       countries: null,
       loginError: null,
+      cart: null,
       demo: [
         {
           title: "FIRST",
