@@ -368,6 +368,9 @@ table {
 .bg--secondary {
   background-color: var(--color-secondary);
 }
+.bg--terciary{
+  background-color: var(--color-terciary);
+}
 .logo__about {
   font-size: 350%;
 }
@@ -450,6 +453,15 @@ table {
 }
 
 /* --------Products------------ */
+
+.favorite--selected {
+  color: var(--color-secondary);
+}
+
+.products__icon:hover{
+  color: var(--color-secondary);
+  filter: drop-shadow(2px 2px 2px var(--color-terciary));
+}
 
 .btn__details {
   display: flex;
@@ -554,3 +566,4 @@ table {
 .info__text--small{
   font-size: 0.7rem;
 }
+
