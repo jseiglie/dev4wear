@@ -31,6 +31,29 @@ const getState = ({ getStore, getActions, setStore }) => {
       ],
     },
     actions: {
+      getCart: async (id) => {
+        const store = getStore();
+        let ids = ""
+        if (!store.cart) {
+          try {
+            const resp = await fetch(`${process.env.REACT_APP_API}/cart/${id}`);
+            const data = await resp.json();
+            ids = data.items.split("-")
+            const items = await fetch(`${process.env.REACT_APP_API}/getCartItems`, {
+              method: "POST",
+              headers: {
+                "Content-Type": "application/json",
+              },
+              body: JSON.stringify({ids: ids})
+            });
+            const itemData = await items.json()
+            console.log(itemData)
+            setStore({cart: itemData})
+          } catch (error) {
+            console.log(error);
+          }
+        }
+      },
       designDetails: async (id) => {
         const store = getStore();
         const resp = await fetch(
@@ -91,7 +114,7 @@ const getState = ({ getStore, getActions, setStore }) => {
           ? setStore({ needLogin: false })
           : setStore({ needLogin: true });
       },
-      add_to_cart: (el) => {
+      add_to_cart: async (id, el) => {
         const store = getStore();
         if (store.cart === null) {
           setStore({ cart: [el] });
@@ -100,12 +123,44 @@ const getState = ({ getStore, getActions, setStore }) => {
           const aux = [...cart, el];
           setStore({ cart: aux });
         }
+        try {
+          const aux = [];
+          store.cart.map((el) => aux.push(el.id));
+          const resp = await fetch(`${process.env.REACT_APP_API}/cart/${id}`, {
+            method: "PUT",
+            headers: {
+              "Content-Type": "application/json",
+            },
+            body: JSON.stringify({ items: aux.join("-") }),
+          });
+          console.log(await resp.json());
+        } catch (error) {
+          console.log(error);
+        }
       },
-      remove_from_cart: (id) => {
+      remove_from_cart: async (id) => {
         const store = getStore();
-        const cart = store.cart;
-        const aux = cart.filter((el) => el.id != id);
-        setStore({ cart: aux });
+        try {
+          const cart = store.cart;
+          const aux = cart.filter((el) => el.id != id);
+          setStore({ cart: aux });
+        } catch (error) {
+          console.log(error);
+        }
+        try {
+          const aux = [];
+          store.cart.map((el) => aux.push(el.id));
+          const resp = await fetch(`${process.env.REACT_APP_API}/cart/${id}`, {
+            method: "PUT",
+            headers: {
+              "Content-Type": "application/json",
+            },
+            body: JSON.stringify({ items: aux.join("-") }),
+          });
+          console.log(await resp.json());
+        } catch (error) {
+          console.log(error);
+        }
       },
       add_removeFavorite: (user_id, id) => {
         console.log(user_id, id);

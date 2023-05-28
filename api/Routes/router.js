@@ -17,6 +17,8 @@ const {
   cancel_order,
   capture_order,
 } = require("../controllers/paypal.controllers");
+const Cart = require("../models/Cart");
+
 //checks for validToken
 router.get("/auth", validateToken, (req, res) => {
   res.json(req.user);
@@ -120,7 +122,7 @@ router.post("/login", async (req, res) => {
   const { email, password } = req.body;
   try {
     const user = await Users.findOne({ where: { email: email } });
-    if (user!=null) {
+    if (user != null) {
       bcrypt.compare(password, user.password).then((match) => {
         if (!match) {
           res.json({ error: "usuario y/o contraseña incorrecto" });
@@ -133,18 +135,20 @@ router.post("/login", async (req, res) => {
         res.json({ status: "OK", token: token, user: user });
       });
     } else {
-      res.status(410).json({ error: "This email doesn't has a linked account" });
+      res
+        .status(410)
+        .json({ error: "This email doesn't has a linked account" });
       return;
     }
   } catch (error) {
     console.error(error);
   }
-}); 
-   
+});
+
 //get users
 router.get("/users", async (req, res) => {
   const resp = await Users.findAll();
-  res.send(resp); 
+  res.send(resp);
 });
 
 //edit user
@@ -261,9 +265,6 @@ router.get("/products", async (req, res) => {
 });
 //ONE PRODUCT
 router.post("/product/:id", async (req, res) => {
-  console.log(
-    `https://api.printify.com/v1/shops/${process.env.NODE_ENV_STORE_ID}/products/${req.params.id}.json`
-  );
   const config = {
     method: "get",
     maxBodyLength: Infinity,
@@ -396,6 +397,61 @@ router.post("/create_order", async (req, res) => {
   res.send(config);
   console.log(config);
   return;
+});
+
+router.get("/cart/:id", async (req, res) => {
+  const id = req.params.id;
+  try {
+    const resp = await Cart.findOne({ where: { UserId: id } });
+    if (!resp) {
+      const create = await Cart.create({ UserId: id });
+
+      res.send(await create);
+    }
+
+    res.send(await resp);
+  } catch (error) {
+    console.log(error);
+    res.send(error);
+  }
+});
+
+router.put("/cart/:id", async (req, res) => {
+  const { items } = req.body;
+  const id = req.params.id;
+  const resp = await Cart.update(
+    {
+      items: items,
+    },
+    { where: { UserId: id } }
+  );
+  res.send({ msg: "cart updated" });
+});
+
+router.post("/getCartItems", async (req, res) => {
+  const { ids } = req.body;
+  const aux = await ids.map(async (el) => {
+    const config = {
+      method: "get",
+      maxBodyLength: Infinity,
+      url: `https://api.printify.com/v1/shops/${process.env.NODE_ENV_STORE_ID}/products/${el}.json`,
+      headers: {
+        Authorization: `Bearer ${process.env.NODE_ENV_PRINTIFY_TOKEN}`,
+        "User-Agent": "dev4wear",
+      },
+    };
+   await axios
+      .request(config)
+      .then((response) => 
+        response.data
+      ).then(data => data)
+      .catch((error) => 
+        res.send(error)   
+      );
+   });
+   await aux
+    console.log("---------------AUX------------------", aux)
+    res.send(aux);
 });
 
 module.exports = router;

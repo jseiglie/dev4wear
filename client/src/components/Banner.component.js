@@ -52,7 +52,7 @@ const BannerComponent = () => {
                     dev4Wear.register(newUser);
                   </Link>
                   <span className="user-separator">
-                    /*--------------------------*/
+                    /*-----------------------*/
                   </span>
                   <Link to={"/login"} className="user--login">
                     dev4Wear.login(email, password);

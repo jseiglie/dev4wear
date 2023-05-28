@@ -18,8 +18,11 @@ const ProductsComponent = (props) => {
   };
 
   const handleCart = (el) => {
-    if (!store.auth) navigate("/login");
-    actions.add_to_cart(el);
+    if (!store.auth) {
+      navigate("/login");
+    } else {
+      actions.add_to_cart(store.user.id, el);
+    }
   };
   return (
     <section className="container">

@@ -4,11 +4,13 @@ import { PaymentMethodsComponent } from "./PaymentMethods.component";
 import { HomeProfileComponent } from "./Home.Profile.component";
 import { FavoritesProfileComponent } from "./Favorites.Profile.component";
 import { OrderHistoryProfileComponent } from "./OrderHistory.Profile.component";
+import { GetCart } from "./utils/GetCart";
 
 export const ProfileCahsboardComponent = () => {
   
   return (
     <section className="my-5 d-flex flex-column align-items-center ">
+      <GetCart/>
       <ul className="nav nav-tabs justify-content-center" id="myTab" role="tablist">
         <li className="nav-item" role="presentation">
           <button

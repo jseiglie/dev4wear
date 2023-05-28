@@ -15,6 +15,7 @@ const Categories = require("./models/Categories");
 const Orders = require("./models/Orders");
 const PaymentMethods = require("./models/PaymentMethods");
 const Items = require("./models/Items");
+const Cart = require("./models/Cart")
 //const path = require("path");
 
 //app.use(express.urlencoded({extended: true}))
@@ -53,6 +54,9 @@ Orders.hasMany(Items, { foreignKey: "Items_id" });
 Items.belongsTo(Orders);
 Items.hasMany(Categories, { foreignKey: "category_id" });
 Categories.belongsTo(Items);
+
+Users.hasOne(Cart)
+Cart.belongsTo(Users)
 
 try {
   db.sync({ alter: true }).then(() => {
