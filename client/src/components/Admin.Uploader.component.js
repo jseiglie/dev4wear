@@ -24,7 +24,6 @@ export const AdminUploaderComponent = () => {
   };
 
   const previewFile = (file) => {
-    console.log(file);
     if (file === undefined) {
       setFileInputState("");
       setSelectedFile("");

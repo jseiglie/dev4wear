@@ -17,6 +17,10 @@ const ProductsComponent = (props) => {
     actions.add_removeFavorite(store.user.id, id);
   };
 
+  const handleCart = (el) => {
+    if (!store.auth) navigate("/login");
+    actions.add_to_cart(el);
+  };
   return (
     <section className="container">
       <article className="row">
@@ -26,18 +30,23 @@ const ProductsComponent = (props) => {
               className="col-sm-12 col-md-6 col-lg-4 col-xl-3 my-3"
               key={i}
             >
-              <section
-                id={el.id}
-                className="card"
-                onClick={async () => {
-                  await actions.productsDetails(`${el.id}`);
-                  navigate(`/details/${el.id}`);
-                }}
-              >
-                <section className="card-body p-0">
+              <section id={el.id} className="card">
+                <section
+                  className="card-body p-0"
+                  onClick={async (e) => {
+                    await actions.productsDetails(`${el.id}`);
+                    navigate(`/details/${el.id}`);
+                  }}
+                >
                   <figure>
-                    <img className="img-top img-fluid" src={el.images[0].src} alt={el.title}/>
-                    <figcaption className="bg--secondary p-2">({`{${el.title}}`}) </figcaption>
+                    <img
+                      className="img-top img-fluid"
+                      src={el.images[0].src}
+                      alt={el.title}
+                    />
+                    <figcaption className="bg--secondary p-2">
+                      ({`{${el.title}}`}){" "}
+                    </figcaption>
                   </figure>
                   {/* <Suspense fallback={<h1>loading carousel</h1>}>
                     <CarouselComponent className="img-top" obj={el} />
@@ -45,11 +54,14 @@ const ProductsComponent = (props) => {
                   {/* <span>{el.title}</span> */}
                 </section>
                 <section className="card-footer products__card__footer text-white bg--primary">
-                  <span className="fa-solid fa-cart-shopping products__icon"></span>
-                  <span>price: 25.00 </span>
                   <span
                     className="fa-regular fa-heart products__icon"
                     onClick={(e) => handleFavorite(e)}
+                  ></span>
+                  <span>price: 25.00 </span>
+                  <span
+                    className="fa-solid fa-cart-shopping products__icon"
+                    onClick={(e) => handleCart(el)}
                   ></span>
                 </section>
               </section>

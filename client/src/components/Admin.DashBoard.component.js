@@ -2,6 +2,7 @@ import React, { useContext, useEffect } from "react";
 import { Context } from "../state/appContext";
 import { useNavigate } from "react-router-dom";
 import { AdminUploaderComponent } from "./Admin.Uploader.component";
+import { AdminCategoriesComponent } from "./AdminCategories.component";
 
 export const AdminDashBoardComponent = () => {
   const { store, actions } = useContext(Context);
@@ -48,16 +49,16 @@ export const AdminDashBoardComponent = () => {
           </button>
           <button
             className="nav-link"
-            id="v-pills-disabled-tab"
+            id="v-pills-categories-tab"
             data-bs-toggle="pill"
-            data-bs-target="#v-pills-disabled"
+            data-bs-target="#v-pills-categories"
             type="button"
             role="tab"
-            aria-controls="v-pills-disabled"
+            aria-controls="v-pills-categories"
             aria-selected="false"
-            disabled
+            
           >
-            Disabled
+            Categories
           </button>
           <button
             className="nav-link"
@@ -105,12 +106,12 @@ export const AdminDashBoardComponent = () => {
           </div>
           <div
             className="tab-pane fade"
-            id="v-pills-disabled"
+            id="v-pills-categories"
             role="tabpanel"
-            aria-labelledby="v-pills-disabled-tab"
+            aria-labelledby="v-pills-categories-tab"
             tabIndex="0"
           >
-            ...
+            <AdminCategoriesComponent/>
           </div>
           <div
             className="tab-pane fade"

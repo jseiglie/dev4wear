@@ -52,10 +52,35 @@ const getState = ({ getStore, getActions, setStore }) => {
         const data = await resp.json();
         setStore({ cloudinaryImages: data });
       },
+      addCategory: async (category) => {
+        try {
+          const myHeaders = new Headers();
+          myHeaders.append("Content-Type", "application/json");
+          const raw = JSON.stringify({
+            category: category,
+          });
+          const requestOptions = {
+            method: "POST",
+            headers: myHeaders,
+            body: raw,
+            redirect: "follow",
+          };
+          const resp = await fetch(
+            `${process.env.REACT_APP_API}/categories`,
+            requestOptions
+          );
+        } catch (error) {
+          console.log(error);
+        }
+      },
       getCategories: async () => {
-        const resp = await fetch(`${process.env.REACT_APP_API}/categories`);
-        const data = await resp.json();
-        setStore({ categories: data });
+        try {
+          const resp = await fetch(`${process.env.REACT_APP_API}/categories`);
+          const data = await resp.json();
+          setStore({ categories: data });
+        } catch (error) {
+          console.log(error);
+        }
       },
       buyNow: (id) => {
         console.log(id);
@@ -66,14 +91,26 @@ const getState = ({ getStore, getActions, setStore }) => {
           ? setStore({ needLogin: false })
           : setStore({ needLogin: true });
       },
-      add_to_cart: (id) => {
-        console.log(id);
+      add_to_cart: (el) => {
+        const store = getStore();
+        if (store.cart === null) {
+          setStore({ cart: [el] });
+        } else {
+          const cart = store.cart;
+          const aux = [...cart, el];
+          setStore({ cart: aux });
+        }
+      },
+      remove_from_cart: (id) => {
+        const store = getStore();
+        const cart = store.cart;
+        const aux = cart.filter((el) => el.id != id);
+        setStore({ cart: aux });
       },
       add_removeFavorite: (user_id, id) => {
         console.log(user_id, id);
       },
       login_register: async (url, email, password) => {
-        console.log("-------------LOGI_REGISTER------------------------", url);
         try {
           const myHeaders = new Headers();
           myHeaders.append("Content-Type", "application/json");

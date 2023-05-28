@@ -139,12 +139,12 @@ router.post("/login", async (req, res) => {
   } catch (error) {
     console.error(error);
   }
-});
-
+}); 
+   
 //get users
 router.get("/users", async (req, res) => {
   const resp = await Users.findAll();
-  res.send(resp);
+  res.send(resp); 
 });
 
 //edit user

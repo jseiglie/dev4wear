@@ -140,6 +140,21 @@ table {
   overflow-x: hidden;
 }
 
+/* body::-webkit-scrollbar {
+  width: 12px;
+}
+
+body::-webkit-scrollbar-track {
+  background: var(--color-primary);
+}
+
+body::-webkit-scrollbar-thumb,
+body::-webkit-scrollbar-thumb:horizontal
+{
+  background-color: var(--color-secondary);
+  border-radius: 2rem;
+} */
+
 .separator__text {
   width: 100%;
   background-color: var(--color-terciary);
@@ -184,6 +199,10 @@ table {
 .banner_btn__logout:hover {
   color: var(--color-secondary) !important;
 }
+.badge--small {
+  font-size: 0.7rem;
+  align-self: flex-start;
+}
 .user__register-login--container {
   display: flex;
   flex-direction: column;
@@ -198,6 +217,10 @@ table {
 .link {
   text-decoration: none;
   color: var(--color-primary);
+}
+
+.link:hover {
+  color: var(--color-secondary);
 }
 
 .user--register:hover,
@@ -368,7 +391,7 @@ table {
 .bg--secondary {
   background-color: var(--color-secondary);
 }
-.bg--terciary{
+.bg--terciary {
   background-color: var(--color-terciary);
 }
 .logo__about {
@@ -458,7 +481,7 @@ table {
   color: var(--color-secondary);
 }
 
-.products__icon:hover{
+.products__icon:hover {
   color: var(--color-secondary);
   filter: drop-shadow(2px 2px 2px var(--color-terciary));
 }
@@ -505,14 +528,13 @@ table {
 .btn--primary {
   background-color: var(--color-primary);
   color: var(--color-white);
-  
 }
 
-.sm{
+.sm {
   max-width: 10%;
 }
 
-.md{
+.md {
   max-width: 50%;
 }
 
@@ -520,50 +542,63 @@ table {
   background-color: var(--color-secondary);
 }
 
-
-
 /* --------Designs--------- */
 
-.design__wrapper:hover{
+.design__wrapper:hover {
   cursor: pointer;
 }
 
-.text--comments{
+.text--comments {
   font-size: 0.8rem;
   font-style: italic;
 }
 
-
-
 /*--------- PAYPAL ------------ */
 
-.btn-paypal{
-  transition: color 0.2s ease 0s, background-color 0.2s ease 0s, border-color 0.2s ease 0s, box-shadow 0.2s ease 0s;
-    transition-duration: 0.2s, 0.2s, 0.2s, 0.2s;
-    transition-timing-function: ease, ease, ease, ease;
-    transition-delay: 0s, 0s, 0s, 0s;
-    transition-property: color, background-color, border-color, box-shadow;
-    border: 0.125rem solid rgb(0, 48, 135);
-    color: rgb(255, 255, 255);
-    font-family: PayPalOpen-Bold, "Helvetica Neue", Arial, sans-serif;
-    font-size: 1.125rem;
-    line-height: 1.5rem;
-    font-weight: 400;
-    background-color: rgb(0, 48, 135);
-    padding: 0.625rem 1.875rem;
-    min-width: 6rem;
-    border-radius: 1000px;
+.btn-paypal {
+  transition: color 0.2s ease 0s, background-color 0.2s ease 0s,
+    border-color 0.2s ease 0s, box-shadow 0.2s ease 0s;
+  transition-duration: 0.2s, 0.2s, 0.2s, 0.2s;
+  transition-timing-function: ease, ease, ease, ease;
+  transition-delay: 0s, 0s, 0s, 0s;
+  transition-property: color, background-color, border-color, box-shadow;
+  border: 0.125rem solid rgb(0, 48, 135);
+  color: rgb(255, 255, 255);
+  font-family: PayPalOpen-Bold, "Helvetica Neue", Arial, sans-serif;
+  font-size: 1.125rem;
+  line-height: 1.5rem;
+  font-weight: 400;
+  background-color: rgb(0, 48, 135);
+  padding: 0.625rem 1.875rem;
+  min-width: 6rem;
+  border-radius: 1000px;
 }
 
-.btn-paypal:hover{
+.btn-paypal:hover {
   text-decoration: none;
   background-color: rgb(0, 112, 224);
   border-color: rgb(0, 112, 224);
 }
 
-
 /* ------Payment Success ------ */
-.info__text--small{
+.info__text--small {
   font-size: 0.7rem;
 }
 
+/* -------------CART------------ */
+.img--sm {
+  max-width: 100px;
+}
+
+.icon--trash {
+  font-size: 2rem;
+}
+.icon--trash:hover {
+  color: red;
+  cursor: pointer;
+}
+.cart__item__info {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}

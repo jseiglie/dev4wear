@@ -28,8 +28,8 @@ const BannerComponent = () => {
                     <p>{store.userEmail}</p>
                   </Link>
                   <div className="d-flex align-self-center ">
-                  <Link to={"/cart"} className="user--register">
-                    <span className="fa-solid fa-cart-shopping user__icon"></span>
+                  <Link to={"/cart"} className="user--register d-flex">
+                    <span className="fa-solid fa-cart-shopping user__icon"><span className="badge text-bg-secondary badge--small">{store.cart? store.cart.length : ""}</span></span>
                     </Link>
                   </div>
                     </div>
