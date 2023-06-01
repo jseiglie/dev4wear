@@ -47,10 +47,10 @@ const getState = ({ getStore, getActions, setStore }) => {
               body: JSON.stringify({ids: ids})
             });
             const itemData = await items.json()
-            console.log(itemData)
+            console.log(await itemData)
             setStore({cart: itemData})
           } catch (error) {
-            console.log(error);
+            console.log(error); 
           }
         }
       },

@@ -430,28 +430,37 @@ router.put("/cart/:id", async (req, res) => {
 
 router.post("/getCartItems", async (req, res) => {
   const { ids } = req.body;
-  const aux = await ids.map(async (el) => {
-    const config = {
-      method: "get",
-      maxBodyLength: Infinity,
-      url: `https://api.printify.com/v1/shops/${process.env.NODE_ENV_STORE_ID}/products/${el}.json`,
-      headers: {
-        Authorization: `Bearer ${process.env.NODE_ENV_PRINTIFY_TOKEN}`,
-        "User-Agent": "dev4wear",
-      },
-    };
-   await axios
-      .request(config)
-      .then((response) => 
-        response.data
-      ).then(data => data)
-      .catch((error) => 
-        res.send(error)   
-      );
-   });
-   await aux
-    console.log("---------------AUX------------------", aux)
-    res.send(aux);
+  const aux = [];
+
+const promises = await ids.map((el) => 
+   fetch(
+      `https://api.printify.com/v1/shops/${process.env.NODE_ENV_STORE_ID}/products/${el}.json`,
+      {
+        headers: {
+          Authorization: `Bearer ${process.env.NODE_ENV_PRINTIFY_TOKEN}`,
+          "User-Agent": "dev4wear",
+          "Content-Type": "application/json",
+        },
+      }
+    ).then(resp=>resp.json())
+)
+
+  // const promises = ids.map((el) => {
+  //  fetch(
+  //     `https://api.printify.com/v1/shops/${process.env.NODE_ENV_STORE_ID}/products/${el}.json`,
+  //     {
+  //       headers: {
+  //         Authorization: `Bearer ${process.env.NODE_ENV_PRINTIFY_TOKEN}`,
+  //         "User-Agent": "dev4wear",
+  //         "Content-Type": "application/json",
+  //       },
+  //     }
+  //   ).then(resp=>resp.json()).then(data=>aux.push(data))
+    
+  //   //aux.push(await resp.json())
+  // });
+  //console.log(await Promise.all(promises))
+  await Promise.all(promises).then(data=> res.send(data));
 });
 
 module.exports = router;
