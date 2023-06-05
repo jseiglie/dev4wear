@@ -2,6 +2,7 @@ import React, { useContext, useState, useEffect } from "react";
 import { Context } from "../state/appContext";
 import { useNavigate } from "react-router-dom";
 import { GetCountries } from "./utils/GetCountries";
+import { CheckAuthHelper } from "./utils/CheckAuth.helper";
 
 const ProfileFormComponent = () => {
   const { store, actions } = useContext(Context);
@@ -47,6 +48,7 @@ const ProfileFormComponent = () => {
       onSubmit={(e) => handleSubmit(e)}
     >
       <GetCountries />
+      <CheckAuthHelper/>
       <div className="row ">
         <div className="col-sm-12 col-md-12 col-lg-4 col-xl-4 d-flex flex-column profile__random__img  ">
           <figure>
