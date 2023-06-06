@@ -1,7 +1,5 @@
-import React from 'react'
+import React from "react";
 
 export const ExampleComponent = () => {
-  return (
-    <div>exampleComponent</div>
-  )
-}
+  return <div>exampleComponent</div>;
+};

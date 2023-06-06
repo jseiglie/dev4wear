@@ -1,11 +1,8 @@
-import React from 'react'
-import CanvasComponent from '../components/Canvas.component'
+import React from "react";
+import CanvasComponent from "../components/Canvas.component";
 
 const Modeler = () => {
-  return (
-    
-    <CanvasComponent/>
-  )
-}
+  return <CanvasComponent />;
+};
 
-export default Modeler
+export default Modeler;

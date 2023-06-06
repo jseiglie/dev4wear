@@ -1,7 +1,6 @@
 import React, { useContext, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import logo from "../imgs/dev4wearLogo-white.webp";
-import { state } from "../state/state";
 import { Context } from "../state/appContext";
 
 export const Logincomponent = (props) => {
@@ -22,10 +21,8 @@ export const Logincomponent = (props) => {
       setErrorPassword(true);
       throw new Error("Password is not valid");
     }
-      await actions
-      .login_register(url, email, password)
-      if(store.token) navigate("/profile")
-      
+    await actions.login_register(url, email, password);
+    if (store.token) navigate("/profile");
   };
   return (
     <div className="container">
@@ -77,7 +74,7 @@ export const Logincomponent = (props) => {
               required
               onChange={(e) => setPassword(e.target.value)}
             />
-            
+
             <input
               className="form-control my-3 form__btn"
               value={"execute();"}
@@ -91,12 +88,13 @@ export const Logincomponent = (props) => {
             ) : (
               ""
             )}
-            {store.loginError ? (<span className="bg-danger mt-3">
+            {store.loginError ? (
+              <span className="bg-danger mt-3">
                 Error: {`${store.loginError}`}
-              </span>)
-            :
-            ""  
-            }
+              </span>
+            ) : (
+              ""
+            )}
           </form>
         </div>
       </article>

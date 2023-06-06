@@ -1,12 +1,10 @@
-import React from 'react'
+import React from "react";
 
 export const AboutComponent = () => {
   return (
     <article>
-
-    
       <header className="container p-5 d-flex justify-content-center">
-        <span >
+        <span>
           <p>What does</p>
           <br />
           <h2 className="logo logo__about orange">dev4Wear();</h2> <br />
@@ -111,6 +109,6 @@ export const AboutComponent = () => {
           </div>
         </div>
       </article>
-      </article>
-  )
-}
+    </article>
+  );
+};

@@ -11,10 +11,10 @@ export const Home = () => {
     }
 },[])
   return (
-    <div>
+    <main>
       <HookComponent />
       <SeparatorComponent />
       <LatestComponent />
-    </div>
+    </main>
   );
 };

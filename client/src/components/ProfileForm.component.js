@@ -11,17 +11,21 @@ const ProfileFormComponent = () => {
   useEffect(() => {
     if (!store.user || !store.token) navigate("/login");
   }, []);
-  const [firstName, setFirstName] = useState(store.user? store.user.firstName : "");
-  const [lastName, setLastName] = useState(store.user? store.user.lastName : "");
-  const [email, setEmail] = useState(store.user? store.user.email : "");
+  const [firstName, setFirstName] = useState(
+    store.user.firstName ? store.user.firstName : ""
+  );
+  const [lastName, setLastName] = useState(
+    store.user.lastName ? store.user.lastName : ""
+  );
+  const [email, setEmail] = useState(store.user.email ? store.user.email : "");
   const [password, setPassword] = useState("");
   const [newPassword, setNewPassword] = useState("");
-  const [phone, setPhone] = useState(store.user? store.user.phone : "");
-  const [address, setAddress] = useState(store.user? store.user.address : "");
-  const [zip, setZip] = useState(store.user? store.user.zip : "");
-  const [city, setCity] = useState(store.user? store.user.city : "");
-  const [state, setState] = useState(store.user? store.user.state : "");
-  const [country, setCountry] = useState(store.user? store.user.country : "");
+  const [phone, setPhone] = useState(store.user ? store.user.phone : "");
+  const [address, setAddress] = useState(store.user ? store.user.address : "");
+  const [zip, setZip] = useState(store.user ? store.user.zip : "");
+  const [city, setCity] = useState(store.user ? store.user.city : "");
+  const [state, setState] = useState(store.user ? store.user.state : "");
+  const [country, setCountry] = useState(store.user ? store.user.country : "");
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -48,7 +52,7 @@ const ProfileFormComponent = () => {
       onSubmit={(e) => handleSubmit(e)}
     >
       <GetCountries />
-      <CheckAuthHelper/>
+      <CheckAuthHelper />
       <div className="row ">
         <div className="col-sm-12 col-md-12 col-lg-4 col-xl-4 d-flex flex-column profile__random__img  ">
           <figure>

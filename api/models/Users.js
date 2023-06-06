@@ -1,74 +1,76 @@
-const Sequelize = require('sequelize');
-const db = require("../config/db")
-const Users = db.define('Users', {
+const Sequelize = require("sequelize");
+const db = require("../config/db");
+const Users = db.define(
+  "Users",
+  {
     id: {
       type: Sequelize.UUID,
-      defaultValue: Sequelize.UUIDV4 ,
-      primaryKey: true
+      defaultValue: Sequelize.UUIDV4,
+      primaryKey: true,
     },
     firstName: {
       type: Sequelize.STRING(30),
-      allowNull: true
+      allowNull: true,
     },
     lastName: {
       type: Sequelize.STRING(30),
-      allowNull: true
+      allowNull: true,
     },
     email: {
       type: Sequelize.STRING(60),
       allowNull: false,
-      unique: true
+      unique: true,
     },
     password: {
       type: Sequelize.STRING(100),
-      allowNull: false
-    }, 
+      allowNull: false,
+    },
     phone: {
       type: Sequelize.STRING(15),
       allowNull: true,
-      unique: true
-    }, 
+      unique: true,
+    },
     address: {
       type: Sequelize.STRING(100),
-      allowNull: true
+      allowNull: true,
     },
     zip: {
       type: Sequelize.INTEGER,
-      allowNull: true
+      allowNull: true,
     },
     city: {
       type: Sequelize.STRING(40),
-      allowNull: true
+      allowNull: true,
     },
     state: {
       type: Sequelize.STRING(40),
-      allowNull: true
+      allowNull: true,
     },
     country: {
       type: Sequelize.STRING(30),
-      allowNull: true
+      allowNull: true,
     },
-    paymentMethod:{
+    paymentMethod: {
       type: Sequelize.INTEGER,
       allowNull: true,
       // references:{
       //   model: "PaymentMethods",
       //   key: "id",
       // }
-    }
-  }, {
+    },
+  },
+  {
     Sequelize,
-    tableName: 'Users',
+    tableName: "Users",
     timestamps: false,
     indexes: [
       {
         name: "PRIMARY",
         unique: true,
         using: "BTREE",
-        fields: [
-          { name: "id" },
-        ]
+        fields: [{ name: "id" }],
       },
-    ]
-  });
+    ],
+  }
+);
 module.exports = Users;

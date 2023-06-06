@@ -430,8 +430,8 @@ router.put("/cart/:id", async (req, res) => {
 
 router.post("/getCartItems", async (req, res) => {
   const { ids } = req.body;
-const promises = await ids.map((el) => 
-   fetch(
+  const promises = await ids.map((el) =>
+    fetch(
       `https://api.printify.com/v1/shops/${process.env.NODE_ENV_STORE_ID}/products/${el}.json`,
       {
         headers: {
@@ -440,9 +440,9 @@ const promises = await ids.map((el) =>
           "Content-Type": "application/json",
         },
       }
-    ).then(resp=>resp.json())
-);
-  await Promise.all(promises).then(data=> res.send(data));
+    ).then((resp) => resp.json())
+  );
+  await Promise.all(promises).then((data) => res.send(data));
 });
 
 module.exports = router;

@@ -42,9 +42,9 @@ export const CartComponent = () => {
                         <p>Price: 25.00 €</p>
                       </div>
                       <div className="d-flex flex-column ">
-                        <span className="fa-regular fa-trash-can icon--trash"
-                        onClick={e=>actions.remove_from_cart(el.id)}
-                        
+                        <span
+                          className="fa-regular fa-trash-can icon--trash"
+                          onClick={(e) => actions.remove_from_cart(el.id)}
                         ></span>
                       </div>
                     </section>
@@ -52,10 +52,11 @@ export const CartComponent = () => {
                 </article>
               ))}
           </section>
+
           <section className="col-sm-12 col-md-6 col-lg-6 col-xl-6 my-5 d-flex flex-column align-self-center">
             <h3></h3>
             <p className="mt-3">Ammount of items: {store.cart.length}</p>
-            <p className="my-3">Total: {25.00*store.cart.length}.00€</p>
+            <p className="my-3">Total: {25.0 * store.cart.length}.00€</p>
             <PayPalComponent />
           </section>
         </>

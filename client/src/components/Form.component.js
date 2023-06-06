@@ -71,7 +71,9 @@ const FormComponent = () => {
             onChange={(e) => setName(e.target.value)}
           />
           {errorName ? (
-            <span className="bg-danger">Error: Failed to execute(), field is required</span>
+            <span className="bg-danger">
+              Error: Failed to execute(), field is required
+            </span>
           ) : (
             ""
           )}
@@ -89,7 +91,9 @@ const FormComponent = () => {
             onChange={(e) => setEmail(e.target.value)}
           />
           {errorMail ? (
-            <span className="bg-danger">Error: Failed to execute(), field is required</span>
+            <span className="bg-danger">
+              Error: Failed to execute(), field is required
+            </span>
           ) : (
             ""
           )}
@@ -107,7 +111,13 @@ const FormComponent = () => {
             rows="10"
             onChange={(e) => setMsg(e.target.value)}
           ></textarea>
-          {errorMsg ? <span className="bg-danger">Error: Failed to execute(), field is required</span> : ""}
+          {errorMsg ? (
+            <span className="bg-danger">
+              Error: Failed to execute(), field is required
+            </span>
+          ) : (
+            ""
+          )}
         </div>
         <input
           className="form-control mt-5 w-50 mx-auto"

@@ -27,7 +27,7 @@ export const AdminUploaderComponent = () => {
     if (file === undefined) {
       setFileInputState("");
       setSelectedFile("");
-      setPreviewSource("")
+      setPreviewSource("");
     } else {
       const reader = new FileReader();
       try {
@@ -102,13 +102,16 @@ export const AdminUploaderComponent = () => {
                 className="form-control"
                 required
               />
-              <button className="btn btn-danger"
-              onClick={e=>{
-                setFileInputState("");
-                setSelectedFile("");
-                setPreviewSource("")
-              }}
-              >X</button>
+              <button
+                className="btn btn-danger"
+                onClick={(e) => {
+                  setFileInputState("");
+                  setSelectedFile("");
+                  setPreviewSource("");
+                }}
+              >
+                X
+              </button>
             </div>
             <div className="input-group mb-3">
               <label htmlFor="name" className="input-group-text">
@@ -149,7 +152,9 @@ export const AdminUploaderComponent = () => {
               >
                 {store.categories &&
                   store.categories.map((el, i) => (
-                    <option key={i} value={el.category}>{el.category}</option>
+                    <option key={i} value={el.category}>
+                      {el.category}
+                    </option>
                   ))}
               </select>
             </div>

@@ -1,8 +1,6 @@
-import React from 'react'
-import { Logincomponent } from '../components/Login.component'
+import React from "react";
+import { Logincomponent } from "../components/Login.component";
 
 export const Signup = () => {
-  return (
-    <Logincomponent endpoint={"register"}/>
-  )
-}
+  return <Logincomponent endpoint={"register"} />;
+};

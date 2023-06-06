@@ -2,9 +2,8 @@ import React, { useContext, useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { Context } from "../state/appContext";
 const BannerComponent = () => {
-  
   const { store, actions } = useContext(Context);
-  const navigate = useNavigate()
+  const navigate = useNavigate();
   return (
     <section className="banner container-fluid d-flex gx-0 d-flex justify-content-between">
       <div className="container-fluid ">
@@ -21,25 +20,28 @@ const BannerComponent = () => {
               <section className="d-flex flex-column  align-items-center">
                 <div className="d-flex flex-column justify-content-center align-items-center text-center">
                   <div className="d-flex align-self-center">
+                    <Link to={"/profile"} className="user--register">
+                      <span className="fa-regular fa-circle-user user__icon"></span>
 
-                  <Link to={"/profile"} className="user--register">
-                    <span className="fa-regular fa-circle-user user__icon"></span>
-                    
-                    <p>{store.userEmail}</p>
-                  </Link>
-                  <div className="d-flex align-self-center ">
-                  <Link to={"/cart"} className="user--register d-flex">
-                    <span className="fa-solid fa-cart-shopping user__icon"><span className="badge text-bg-secondary badge--small">{store.cart? store.cart.length : ""}</span></span>
+                      <p>{store.userEmail ? store.userEmail : ""}</p>
                     </Link>
-                  </div>
+                    <div className="d-flex align-self-center ">
+                      <Link to={"/cart"} className="user--register d-flex">
+                        <span className="fa-solid fa-cart-shopping user__icon">
+                          <span className="badge text-bg-secondary badge--small">
+                            {store.cart ? store.cart.length : ""}
+                          </span>
+                        </span>
+                      </Link>
                     </div>
+                  </div>
                   <button
                     className="btn text-dark banner_btn__logout d-flex align-self-center border mt-3"
                     onClick={async () => {
                       await actions.logout();
                       navigate("/");
                     }}
-                    >
+                  >
                     LogOut();
                   </button>
                 </div>

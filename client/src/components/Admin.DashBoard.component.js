@@ -56,7 +56,6 @@ export const AdminDashBoardComponent = () => {
             role="tab"
             aria-controls="v-pills-categories"
             aria-selected="false"
-            
           >
             Categories
           </button>
@@ -102,7 +101,7 @@ export const AdminDashBoardComponent = () => {
             aria-labelledby="v-pills-Upload-tab"
             tabIndex="0"
           >
-            <AdminUploaderComponent/>
+            <AdminUploaderComponent />
           </div>
           <div
             className="tab-pane fade"
@@ -111,7 +110,7 @@ export const AdminDashBoardComponent = () => {
             aria-labelledby="v-pills-categories-tab"
             tabIndex="0"
           >
-            <AdminCategoriesComponent/>
+            <AdminCategoriesComponent />
           </div>
           <div
             className="tab-pane fade"

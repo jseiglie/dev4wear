@@ -1,9 +1,7 @@
-import React from 'react'
+import React from "react";
 
 const CanvasComponent = () => {
-  return (
-    <div>CanvasComponent</div>
-  )
-}
+  return <div>CanvasComponent</div>;
+};
 
-export default CanvasComponent
+export default CanvasComponent;

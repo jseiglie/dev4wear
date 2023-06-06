@@ -1,4 +1,4 @@
-import React,{useEffect, useContext} from "react";
+import React, { useEffect, useContext } from "react";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import "./styles/App.css";
 import { Home } from "./views/Home";
@@ -28,15 +28,13 @@ import { PaymentSuccess } from "./views/PaymentSuccess";
 
 const App = () => {
   const basename = process.env.BASENAME || "";
-  const {store} = useContext(Context);
-  useEffect(()=>{
-    if (localStorage.getItem("token")){
-      store.auth=true;
-      store.userEmail=localStorage.getItem("user")
-    } 
-     
-    
-  },[])
+  const { store } = useContext(Context);
+  useEffect(() => {
+    if (localStorage.getItem("token")) {
+      store.auth = true;
+      store.userEmail = localStorage.getItem("user");
+    }
+  }, []);
 
   return (
     <div className="App">
@@ -52,18 +50,21 @@ const App = () => {
           <Route path="/modeler" element={<Modeler />} />
           <Route path="/about" element={<About />} />
           <Route path="/contact" element={<Contact />} />
-          <Route path="/login" element={<Login/>}/>
-          <Route path="/signup" element={<Signup/>}/>
-          <Route path="/profile" element={<Profile/>}/>
-          <Route path="/products" element={<Products/>}/>
-          <Route path="details/:id" element={<Details/>}/>
-          <Route path="/cart" element={<Cart/>} />
-          <Route path="/faq" element={<FAQ/>} />
-          <Route path="/designs" element={<Designs/>} />
-          <Route path="/design_details/:id" element={<DesignsDetails/>}/>
-          <Route path="/admin" element={<Admin/>} />
-          <Route path="/admin_dashboard" element={<AdminDashBoardComponent/>} />
-          <Route path="/payment_success" element={<PaymentSuccess/>}/>
+          <Route path="/login" element={<Login />} />
+          <Route path="/signup" element={<Signup />} />
+          <Route path="/profile" element={<Profile />} />
+          <Route path="/products" element={<Products />} />
+          <Route path="details/:id" element={<Details />} />
+          <Route path="/cart" element={<Cart />} />
+          <Route path="/faq" element={<FAQ />} />
+          <Route path="/designs" element={<Designs />} />
+          <Route path="/design_details/:id" element={<DesignsDetails />} />
+          <Route path="/admin" element={<Admin />} />
+          <Route
+            path="/admin_dashboard"
+            element={<AdminDashBoardComponent />}
+          />
+          <Route path="/payment_success" element={<PaymentSuccess />} />
           <Route path="*" element={<NotFound />} />
         </Routes>
         <SeparatorComponent />
@@ -75,4 +76,4 @@ const App = () => {
   );
 };
 
-export default injectContext(App)
+export default injectContext(App);

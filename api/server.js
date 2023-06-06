@@ -1,4 +1,4 @@
-require('dotenv').config()
+require("dotenv").config();
 //import {sequelize} from "./config/db.js";
 //import  express  from "express";
 const https = require("https");
@@ -15,7 +15,7 @@ const Categories = require("./models/Categories");
 const Orders = require("./models/Orders");
 const PaymentMethods = require("./models/PaymentMethods");
 const Items = require("./models/Items");
-const Cart = require("./models/Cart")
+const Cart = require("./models/Cart");
 //const path = require("path");
 
 //app.use(express.urlencoded({extended: true}))
@@ -55,8 +55,8 @@ Items.belongsTo(Orders);
 Items.hasMany(Categories, { foreignKey: "category_id" });
 Categories.belongsTo(Items);
 
-Users.hasOne(Cart)
-Cart.belongsTo(Users)
+Users.hasOne(Cart);
+Cart.belongsTo(Users);
 
 try {
   db.sync({ alter: true }).then(() => {

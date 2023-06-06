@@ -7,11 +7,14 @@ import { OrderHistoryProfileComponent } from "./OrderHistory.Profile.component";
 import { GetCart } from "./utils/GetCart";
 
 export const ProfileCahsboardComponent = () => {
-  
   return (
     <section className="my-5 d-flex flex-column align-items-center ">
-      <GetCart/>
-      <ul className="nav nav-tabs justify-content-center" id="myTab" role="tablist">
+      <GetCart />
+      <ul
+        className="nav nav-tabs justify-content-center"
+        id="myTab"
+        role="tablist"
+      >
         <li className="nav-item" role="presentation">
           <button
             className="nav-link active"
@@ -26,7 +29,7 @@ export const ProfileCahsboardComponent = () => {
             home();
           </button>
         </li>
-        
+
         <li className="nav-item" role="presentation">
           <button
             className="nav-link"
@@ -92,7 +95,7 @@ export const ProfileCahsboardComponent = () => {
           aria-labelledby="home-tab"
           tabIndex="0"
         >
-          <HomeProfileComponent/>
+          <HomeProfileComponent />
         </div>
         <div
           className="tab-pane fade"
@@ -101,7 +104,7 @@ export const ProfileCahsboardComponent = () => {
           aria-labelledby="profile-tab"
           tabIndex="0"
         >
-          <ProfileFormComponent/>
+          <ProfileFormComponent />
         </div>
         <div
           className="tab-pane fade"
@@ -110,7 +113,7 @@ export const ProfileCahsboardComponent = () => {
           aria-labelledby="Payment-Methods-tab"
           tabIndex="0"
         >
-          <PaymentMethodsComponent/>
+          <PaymentMethodsComponent />
         </div>
         <div
           className="tab-pane fade"
@@ -119,7 +122,7 @@ export const ProfileCahsboardComponent = () => {
           aria-labelledby="disabled-tab"
           tabIndex="0"
         >
-          <OrderHistoryProfileComponent/>
+          <OrderHistoryProfileComponent />
         </div>
         <div
           className="tab-pane fade"
@@ -128,7 +131,7 @@ export const ProfileCahsboardComponent = () => {
           aria-labelledby="disabled-tab"
           tabIndex="0"
         >
-          <FavoritesProfileComponent/>
+          <FavoritesProfileComponent />
         </div>
       </div>
     </section>

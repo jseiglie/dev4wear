@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import { Context } from "../state/appContext";
 
 const NavbarComponent = () => {
-  const {store} = useContext(Context)
+  const { store } = useContext(Context);
   return (
     <nav
       className="navbar navbar-expand-lg navbar--wrapper"
@@ -50,11 +50,15 @@ const NavbarComponent = () => {
             </li>
           </ul>
           <ul className="navbar-nav  ">
-            {store.auth? <li className="nav-item nav__link">
-              <Link className="nav-link nav__link" to={"/profile"}>
-                d4w.user(profile);
-              </Link>
-            </li> : ""}
+            {store.auth ? (
+              <li className="nav-item nav__link">
+                <Link className="nav-link nav__link" to={"/profile"}>
+                  d4w.user(profile);
+                </Link>
+              </li>
+            ) : (
+              ""
+            )}
             <li className="nav-item nav__link">
               <Link className="nav-link nav__link" to={"/about"}>
                 d4w.about();

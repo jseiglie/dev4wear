@@ -39,13 +39,13 @@ export const PaymentMethodsComponent = () => {
                   <p>cvv: {cardCVV}</p>
                 </div>
                 <div className="p-3">
-                <button className="btn bg-danger">Delete();</button>
+                  <button className="btn bg-danger">Delete();</button>
                 </div>
               </div>
             </div>
           </div>
         </div>
-       </div>
+      </div>
       <div className="pm__item_wrapper"></div>
     </section>
   );
