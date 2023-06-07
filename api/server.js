@@ -16,6 +16,8 @@ const Orders = require("./models/Orders");
 const PaymentMethods = require("./models/PaymentMethods");
 const Items = require("./models/Items");
 const Cart = require("./models/Cart");
+const OrderItemsRel = require("./models/OrderItemsRel")
+const ItemsCategoriesRel = require("./models/ItemsCategoriesRel")
 //const path = require("path");
 
 //app.use(express.urlencoded({extended: true}))
@@ -50,10 +52,12 @@ Users.hasMany(PaymentMethods, { foreignKey: "PaymentMethod_id" });
 PaymentMethods.belongsTo(Users);
 Orders.hasOne(PaymentMethods, { foreignKey: "PaymentMethod_id" });
 PaymentMethods.belongsTo(Orders);
-Orders.hasMany(Items, { foreignKey: "Items_id" });
-Items.belongsTo(Orders);
-Items.hasMany(Categories, { foreignKey: "category_id" });
-Categories.belongsTo(Items);
+Orders.belongsToMany(Items, {through: OrderItemsRel})
+Items.belongsToMany(Orders, {through: OrderItemsRel})
+
+Items.belongsToMany(Categories, {through: ItemsCategoriesRel})
+Categories.belongsToMany(Items, {through: ItemsCategoriesRel})
+
 
 Users.hasOne(Cart);
 Cart.belongsTo(Users);

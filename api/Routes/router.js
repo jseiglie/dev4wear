@@ -11,6 +11,8 @@ const formater = (str) => str.replaceAll(" ", "-");
 const Users = require("../models/Users");
 const { cloudinary } = require("./../config/cloudinary");
 const Categories = require("../models/Categories");
+const Orders = require("../models/Orders");
+const PaymementMethod = require("../models/PaymentMethods")
 const Items = require("../models/Items");
 const {
   create_order,
@@ -31,7 +33,6 @@ router.post("/create_order", async (req, res) => {
 });
 
 router.get("/capture_order", async (req, res) => {
-  console.log("PEPEPEPEPEPEPPE");
   capture_order(req, res);
 });
 router.get("/cancel_order", async (req, res) => {
@@ -51,6 +52,21 @@ router.get("/designDetails/:id", async (req, res) => {
 
   res.send(resp);
 });
+
+router.get("/cart", async (req, res)=>{
+  const resp = Cart.findAll();
+  res.send(resp), 200
+})
+
+router.get("/orders", async (req, res)=>{
+  const data = await Orders.findAll()
+  res.send(data), 200
+})
+
+router.get("/payment_method", async (req, res)=>{
+  const resp = await PaymementMethod.findAll()
+  res.send(resp), 200
+})
 
 router.post("/categories", async (req, res) => {
   const { category } = req.body;
