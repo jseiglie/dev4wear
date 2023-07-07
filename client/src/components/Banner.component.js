@@ -4,6 +4,7 @@ import { Context } from "../state/appContext";
 const BannerComponent = () => {
   const { store, actions } = useContext(Context);
   const navigate = useNavigate();
+
   return (
     <section className="banner container-fluid d-flex gx-0 d-flex justify-content-between">
       <div className="container-fluid ">
@@ -22,7 +23,6 @@ const BannerComponent = () => {
                   <div className="d-flex align-self-center">
                     <Link to={"/profile"} className="user--register">
                       <span className="fa-regular fa-circle-user user__icon"></span>
-
                       <p>{store.userEmail ? store.userEmail : ""}</p>
                     </Link>
                     <div className="d-flex align-self-center ">

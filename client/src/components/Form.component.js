@@ -68,6 +68,7 @@ const FormComponent = () => {
             id="name"
             name="name"
             type="text"
+            placeholder="// How should we call you?"
             onChange={(e) => setName(e.target.value)}
           />
           {errorName ? (
@@ -88,6 +89,7 @@ const FormComponent = () => {
             id="email"
             name="email"
             type="email"
+            placeholder="// Your most used email?"
             onChange={(e) => setEmail(e.target.value)}
           />
           {errorMail ? (
@@ -109,6 +111,7 @@ const FormComponent = () => {
             name="msg"
             cols="50"
             rows="10"
+            placeholder="// Here goes your message"
             onChange={(e) => setMsg(e.target.value)}
           ></textarea>
           {errorMsg ? (

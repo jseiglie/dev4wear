@@ -25,6 +25,7 @@ import { Admin } from "./views/Admin";
 import { AdminDashBoardComponent } from "./components/Admin.DashBoard.component";
 import { DesignsDetails } from "./views/DesignsDetails";
 import { PaymentSuccess } from "./views/PaymentSuccess";
+import { Services } from "./views/Services";
 
 const App = () => {
   const basename = process.env.BASENAME || "";
@@ -58,6 +59,7 @@ const App = () => {
           <Route path="/cart" element={<Cart />} />
           <Route path="/faq" element={<FAQ />} />
           <Route path="/designs" element={<Designs />} />
+          <Route path="/services" element={<Services />} />
           <Route path="/design_details/:id" element={<DesignsDetails />} />
           <Route path="/admin" element={<Admin />} />
           <Route

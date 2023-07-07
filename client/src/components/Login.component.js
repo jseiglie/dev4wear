@@ -26,6 +26,8 @@ export const Logincomponent = (props) => {
   };
   return (
     <div className="container">
+
+      <article className="login_register__wrapper row my-5 p-3 text-white">
       {props.endpoint == "login" ? (
         <h2 className="register__subtitle my-5">
           dev4Wear.login(email, password);
@@ -33,8 +35,6 @@ export const Logincomponent = (props) => {
       ) : (
         <h2 className="register__subtitle my-5">dev4Wear.register(newUser);</h2>
       )}
-
-      <article className="login_register__wrapper row my-5 p-3">
         <div className="col-sm-12 col-md-12 col-lg-6 col-xl-6 my-5 d-flex justify-content-center">
           <figure className="d-flex justify-content-center align-items-center">
             <img src={logo} className="img-fluid" alt="dev4wear();" />
