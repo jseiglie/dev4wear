@@ -1,5 +1,5 @@
 import React from 'react'
-import { Logincomponent } from '../components/Login.component'
+import { Logincomponent } from '../components/loginRegister/Login.component'
 
 export const Admin = () => {
   return (

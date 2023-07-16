@@ -1,5 +1,5 @@
 import React, { useContext, useEffect } from "react";
-import { ProfileCahsboardComponent } from "../components/Profile.dahsboard.component";
+import { ProfileCahsboardComponent } from "../components/profile/Profile.dahsboard.component";
 import { Context } from "../state/appContext";
 import { useNavigate } from "react-router-dom";
 

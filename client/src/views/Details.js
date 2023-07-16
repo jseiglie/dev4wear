@@ -1,7 +1,7 @@
 import React, { Suspense, lazy, useContext,  useState } from "react";
 import { Context } from "../state/appContext";
 const DetailsComponent = lazy(() =>
-  import("./../components/Details.Component")
+  import("./../components/design/Details.Component")
 );
 
 export const Details = () => {

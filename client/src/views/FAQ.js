@@ -1,5 +1,5 @@
 import React from 'react'
-import { FAQComponent } from '../components/FAQ.component'
+import { FAQComponent } from '../components/common/FAQ.component'
 
 export const FAQ = () => {
   return (

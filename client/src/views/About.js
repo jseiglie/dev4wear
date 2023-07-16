@@ -1,6 +1,6 @@
 import React from "react";
-import ImportComponent from "../components/Import.component";
-import { AboutComponent } from "../components/About.component";
+import ImportComponent from "../components/utils/Import.component"
+import { AboutComponent } from "../components/common/About.component";
 const About = () => {
   return (
     <article className="container about__us--wrapper text-white pb-5 my-3">

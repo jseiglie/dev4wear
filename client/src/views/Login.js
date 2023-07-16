@@ -1,5 +1,5 @@
 import React, { useContext, useEffect } from "react";
-import { Logincomponent } from "../components/Login.component";
+import { Logincomponent } from "../components/loginRegister/Login.component";
 import { Context } from "../state/appContext";
 
 export const Login = () => {

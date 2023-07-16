@@ -2,7 +2,7 @@ import React, { lazy, Suspense, useContext, useEffect } from "react";
 import { Context } from "../state/appContext";
 
 const ProductsComponent = lazy(() =>
-  import("../components/Products.component")
+  import("../components/gallery/Products.component")
 );
 
 export const Products = () => {
